@@ -53,8 +53,8 @@ STATUS player_destroy(Player * p){
   if(!p)
     return ERROR;
 
-  if(player->inventory != NULL){
-    inventory_destroy(player->inventory);
+  if(p->inventory != NULL){
+    inventory_destroy(p->inventory);
   }
 
   free(p);
