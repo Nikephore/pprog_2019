@@ -23,10 +23,11 @@ struct _Space {
   Id id;
   char name[WORD_SIZE + 1];
   char gdesc[NUM][LETTERS];
-  Id north;
-  Id south;
-  Id east;
-  Id west;
+  char description[WORD_SIZE + 1];
+  Id link_north;
+  Id link_south;
+  Id link_east;
+  Id link_west;
   Set *set;
 };
 /**
@@ -49,10 +50,10 @@ Space* space_create(Id id) {
 
   newSpace->id = id;
   newSpace->name[0] = '\0';
-  newSpace->north = NO_ID;
-  newSpace->south = NO_ID;
-  newSpace->east = NO_ID;
-  newSpace->west = NO_ID;
+  newSpace->link_north = NO_ID;
+  newSpace->link_south = NO_ID;
+  newSpace->link_east = NO_ID;
+  newSpace->link_west = NO_ID;
 
   newSpace->set = set_create();
 
@@ -95,7 +96,7 @@ STATUS space_set_name(Space* space, char* name) {
   return OK;
 }
 /**
-*@brief establece el norte de un espacio
+*@brief establece el enlace al norte de un espacio
 *@param1 space. Espacio del cual queremos establecerle el norte
 *@param2  id. Id del norte
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
@@ -104,11 +105,11 @@ STATUS space_set_north(Space* space, Id id) {
   if (!space || id == NO_ID) {
     return ERROR;
   }
-  space->north = id;
+  space->link_north = id;
   return OK;
 }
 /**
-*@brief establece el sur de un espacio
+*@brief establece el enlace al sur de un espacio
 *@param1 space. Espacio del cual queremos establecerle el sur
 *@param2  id. Id del sur
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
@@ -117,11 +118,11 @@ STATUS space_set_south(Space* space, Id id) {
   if (!space || id == NO_ID) {
     return ERROR;
   }
-  space->south = id;
+  space->link_south = id;
   return OK;
 }
 /**
-*@brief establece el este de un espacio
+*@brief establece el enlace al este de un espacio
 *@param1 space. Espacio del cual queremos establecerle el este
 *@param2  id. Id del este
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
@@ -130,11 +131,11 @@ STATUS space_set_east(Space* space, Id id) {
   if (!space || id == NO_ID) {
     return ERROR;
   }
-  space->east = id;
+  space->link_east = id;
   return OK;
 }
 /**
-*@brief establece el oeste de un espacio
+*@brief establece el enlace al oeste de un espacio
 *@param1 space. Espacio del cual queremos establecerle el oeste
 *@param2  id. Id del oeste
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
@@ -143,10 +144,27 @@ STATUS space_set_west(Space* space, Id id) {
   if (!space || id == NO_ID) {
     return ERROR;
   }
-  space->west = id;
+  space->link_west = id;
   return OK;
 }
 
+/**
+*@brief establece la descripción de un espacio
+*@param1 space. Espacio del cual queremos establecerle el oeste
+*@param2  char*. descripción del espacio.
+*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
+*/
+STATUS space_set_description(Space* space, char* description){
+    if (!space || !description) {
+    return ERROR;
+  }
+
+  if (!strcpy(space->description, description)) {
+    return ERROR;
+  }
+
+  return OK;
+}
 /**
 *@brief obtiene el nombre de un espacio
 *@param1 space. Espacio del cual queremos obtener el nombre
@@ -178,7 +196,7 @@ Id space_get_north(Space* space) {
   if (!space) {
     return NO_ID;
   }
-  return space->north;
+  return space->link_north;
 }
 /**
 *@brief obtiene el sur del espacio introducido
@@ -189,7 +207,7 @@ Id space_get_south(Space* space) {
   if (!space) {
     return NO_ID;
   }
-  return space->south;
+  return space->link_south;
 }
 /**
 *@brief obtiene el este del espacio introducido
@@ -200,7 +218,7 @@ Id space_get_east(Space* space) {
   if (!space) {
     return NO_ID;
   }
-  return space->east;
+  return space->link_east;
 }
 /**
 *@brief obtiene el oeste del espacio introducido
@@ -211,7 +229,7 @@ Id space_get_west(Space* space) {
   if (!space) {
     return NO_ID;
   }
-  return space->west;
+  return space->link_west;
 }
 /**
 *@brief obtiene el objeto en el espacio
@@ -224,6 +242,19 @@ Set* space_get_object(Space* space){
   }
   return space->set;
 }
+
+/**
+*@brief obtiene la descripción del espacio introducido
+*@param1 space. Espacio del cual queremos saber el oeste
+*@return devuelve la id del este del espacio o NO_ID si ha ocurrido algun error
+*/
+char* space_get_description(Space* space){
+  if (!space) {
+    return NULL;
+  }
+  return space->description;
+}
+
 /**
 *@brief imprime el espacio por pantalla
 *@param1 space. Espacio que se quiere imprimir
