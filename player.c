@@ -2,9 +2,9 @@
  * @brief Se encarga de las funciones y la gestion del jugador de nuestro juego
  *
  * @file player.c
- * @authors Luis Nucifora
- * @version 2.0
- * @date 03/03/2019
+ * @authors Luis Nucifora, Jose Ramon Morales
+ * @version 2.5
+ * @date 15/03/2019
  * @copyright GNU Public License
  */
 #include <stdio.h>
@@ -20,7 +20,7 @@ struct _Player {
   Id id;
   Id location;
   char name[WORD_SIZE + 1];
-  Id object;
+  Inventory* inventory;
 };
 /**
 * @brief inicializa un jugador
@@ -40,7 +40,7 @@ Player * player_create(Id id){
   player->id = id;
   player->location = NO_ID;
   player->name[0] = '\0';
-  player->object = NO_ID;
+  player->inventory = inventory_create();
 
   return player;
 }
@@ -52,6 +52,10 @@ Player * player_create(Id id){
 STATUS player_destroy(Player * p){
   if(!p)
     return ERROR;
+
+  if(player->inventory != NULL){
+    inventory_destroy(player->inventory);
+  }
 
   free(p);
   p = NULL;
@@ -91,20 +95,6 @@ Id player_get_location(Player * p){
 
   return p->location;
 }
-/*
-*@brief obtiene la direccion del objeto de un jugador
-*@param1 p. El jugador del que queremos obtener el objeto
-*@return devuelve la direccion del objeto de jugador o NULL si hubo algun ERROR
-*/
-Id player_get_object(Player * p){
-
-  if(!p){
-    return NO_ID;
-  }
-
-  return p->object;
-}
-
 
 /**
 *@brief cambia la id de un jugador
@@ -142,7 +132,6 @@ return OK;
 *@return devuelve OK si se pudo cambiar la localizacion o ERROR si algo fallo
 */
 STATUS player_set_location(Player * p, Id location){
-
   if(!p)
     return ERROR;
 
@@ -150,21 +139,7 @@ STATUS player_set_location(Player * p, Id location){
 
 return OK;
 }
-/**
-*@brief cambia el objeto de un jugador
-*@param1 p. Jugador del que queremos cambiar el objeto
-*@param2 obj. Objeto para sutituir el objeto actual del jugador
-*@return devuelve OK si se pudo cambiar el nombre o ERROR si algo fallo
-*/
-STATUS player_set_object(Player * p, Id obj){
 
-  if(!p || !obj)
-    return ERROR;
-
-  p->object = obj;
-
-return OK;
-}
 /*
 *@brief imprime el jugador en una direccion especifica
 *@param1 f. La direccion en la que se quiere imprimir el jugador
@@ -172,14 +147,74 @@ return OK;
 *@return  devuelve OK si se pudo cambiar o ERROR si fallo algo
 */
 STATUS player_print(Player * p){
-
   if(!p)
     return ERROR;
 
-  fprintf(stdout, "[ID: %ld | Name: %s | Location: %ld | Object: %ld\n",
-                  p->id, p->name, p->location, p->object);
-
-
+  fprintf(stdout, "[ID: %ld | Name: %s | Location: %ld\n",
+                  p->id, p->name, p->location);
+  inventory_print(p->inventory);
 
   return OK;
+}
+/*
+*@brief Añade elemento al inventario.
+*@param1 player. El jugador donde se quiere añadir.
+*@param2 id. Id del elemento a añadir.
+*@return  devuelve OK si se pudo cambiar o ERROR si fallo algo
+*/
+STATUS player_add_element(Player* player, Id id){
+  if(player == NULL || id == NO_ID ){
+    return ERROR;
+  }
+
+  if(player->inventory == NULL){
+    player->inventory = inventory_create();
+  }
+
+  if(inventory_set_object(player->inventory, id) == ERROR){
+    return ERROR;
+  }
+
+  return OK;
+}
+/*
+*@brief Elimina elemento del inventario.
+*@param1 player. El jugador donde se quiere eliminar.
+*@param2 id. Id del elemento a eliminar.
+*@return  devuelve OK si se pudo cambiar o ERROR si fallo algo.
+*/
+STATUS player_delete_element(Player *player, Id id){
+  if(player == NULL || id == NO_ID ){
+    return ERROR;
+  }
+
+  if(inventory_drop_object(player->inventory, id) == ERROR){
+    return ERROR;
+  }
+
+  return OK;
+}
+/*
+*@brief comprueba si existe un elemento en el inventario.
+*@param1 player. El jugador donde se quiere comprobar.
+*@param2 id. Id del elemento a comprobar.
+*@return  devuelve OK si se pudo cambiar o ERROR si fallo algo.
+*/
+STATUS player_check_element(Player* player, Id id){
+  if(!player || id == NO_ID){
+    return ERROR;
+  }
+
+  return inventory_compare(player->inventory, id);
+}
+/*
+*@brief devuelve el inventario.
+*@param1 player. El jugador donde se quiere devolver el inventario..
+*@return  devuelveel inventario o NULL si falla algo.
+*/
+Inventory* player_get_inventory(Player* player){
+  if (!player) {
+    return NULL;
+  }
+  return player->inventory;
 }

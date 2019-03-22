@@ -13,7 +13,6 @@
 
 #include "types.h"
 #include "object.h"
-#include "inventory.h"
 /**
 * @brief La estructura de un jugador
 *
@@ -58,14 +57,6 @@ Id player_get_location(Player * p);
 */
 char* player_get_name(Player * p);
 
-
-/*
-*@brief obtiene la direccion del objeto de un jugador
-*@param1 p. El jugador del que queremos obtener el objeto
-*@return devuelve la direccion del objeto de jugador o NULL si hubo algun ERROR
-*/
-Id player_get_object(Player * p);
-
 /**
 *@brief cambia la id de un jugador
 *@param1 p. El jugador del que queremos cambiar la Id
@@ -83,13 +74,6 @@ STATUS player_set_id(Player * p, Id id);
 */
 STATUS player_set_location(Player * p, Id loc);
 
-/**
-*@brief cambia el nombre de un jugador
-*@param1 p. El jugador del que queremos cambiar el nombre
-*@param2 name. Nombre para sutituir el nombre actual del jugador
-*@return devuelve OK si se pudo cambiar el nombre o ERROR si algo fallo
-*/
-STATUS player_set_name(Player * p, char* name);
 
 /**
 *@brief cambia el objeto de un jugador
@@ -106,5 +90,36 @@ STATUS player_set_object(Player * p, Id obj);
 *@return  devuelve OK si se pudo cambiar o ERROR si fallo algo
 */
 STATUS player_print(Player * p);
+
+/*
+*@brief Añade elemento al inventario.
+*@param1 player. El jugador donde se quiere añadir.
+*@param2 id. Id del elemento a añadir.
+*@return  devuelve OK si se pudo cambiar o ERROR si fallo algo
+*/
+STATUS player_add_element(Player* player, Id id);
+
+/*
+*@brief Elimina elemento del inventario.
+*@param1 player. El jugador donde se quiere eliminar.
+*@param2 id. Id del elemento a eliminar.
+*@return  devuelve OK si se pudo cambiar o ERROR si fallo algo.
+*/
+STATUS player_delete_element(Player *player, Id id);
+
+/*
+*@brief comprueba si existe un elemento en el inventario.
+*@param1 player. El jugador donde se quiere comprobar.
+*@param2 id. Id del elemento a comprobar.
+*@return  devuelve OK si se pudo cambiar o ERROR si fallo algo.
+*/
+STATUS player_check_element(Player* player, Id id);
+
+/*
+*@brief devuelve el inventario.
+*@param1 player. El jugador donde se quiere devolver el inventario..
+*@return  devuelveel inventario o NULL si falla algo.
+*/
+Inventory* player_get_inventory(Player* player);
 
 #endif
