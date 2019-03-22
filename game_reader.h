@@ -36,4 +36,14 @@ STATUS game_reader_load_spaces (Game* game, char*filename);
 
 STATUS game_reader_load_objects (Game* game, char*filename);
 
+/**
+*@brief carga los enlaces necesarios para el juego
+*@param1 game. Juego en el que queremos cargar los espacios necesarios
+*@param2 filename. Contiene el nombre del archivo en el que se encuentran los datos de carga de enlaces
+*@return devuelve OK si se ejecuto sin problemas y si ha habido algún problema devolvera ERROR
+*/
+
+STATUS game_reader_load_links (Game* game, char*filename);
+
+
 #endif

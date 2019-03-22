@@ -100,9 +100,8 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
 STATUS game_reader_load_objects(Game* game, char* filename){
   /* Declaramos e inicializamos las variables a valores nulos */
   FILE* file = NULL;
-  char line[WORD_SIZE + 1] = "";
-  char name[WORD_SIZE + 1] = "";
-  char description[WORD_SIZE + 1] = "";
+  char line[WORD_SIZE] = "";
+  char name[WORD_SIZE] = "";
   char* toks = NULL;
   Id id = NO_ID;
   Id position = NO_ID;
@@ -132,15 +131,13 @@ STATUS game_reader_load_objects(Game* game, char* filename){
       strcpy(name, toks);
       toks = strtok(NULL, "|");
       position = atol(toks);
-      toks = strtok(NULL, "|");
-      strcpy(description, toks);
 
 #ifdef DEBUG
-      printf("Leido: %ld|%s|%ld|%s\n", id, name, position, description);
+      printf("Leido: %ld|%s|%ld\n", id, name, position);
 #endif
 
 
-      /* creamos un objeto con la id que se lee del fichero */
+      /* creamos un objeto con la id que se lee del fichero de  */
       object = object_create(id);
 
       /* En caso de crearse correctamente, añadimos el
@@ -148,9 +145,71 @@ STATUS game_reader_load_objects(Game* game, char* filename){
       if (object != NULL) {
     	  object_set_name(object, name);
         object_set_location(object, position);
-        object_set_description(object, description);
         space_add_object(game_get_space(game, position), id);
         game_add_object(game, object);
+      }
+    }
+  }
+  /* Si hay algún fallo en el fichero devolvemos ERROR */
+  if (ferror(file)) {
+    status = ERROR;
+  }
+  /* cerramos el fichero */
+  fclose(file);
+
+  return status;
+}
+
+STATUS game_reader_load_links (Game* game, char*filename){
+  /* Declaramos e inicializamos las variables a valores nulos */
+  FILE* file = NULL;
+  char line[WORD_SIZE] = "";
+  char name[WORD_SIZE] = "";
+  char* toks = NULL;
+  Id id = NO_ID;
+  Id position = NO_ID;
+  Object* object = NULL;
+  STATUS status = OK;
+
+  /* validamos que nos llega una direccion de memoria valida donde hemos cargado nuestros datos */
+  if (!filename) {
+    return ERROR;
+  }
+
+  /* abrimos el archivo para leerlo posteriormente */
+  file = fopen(filename, "r");
+  /* comprobamos que no esta vacio */
+  if (file == NULL) {
+    return ERROR;
+  }
+
+  /* procedemos a la lectura de los datos de nuestro archivo y los convertimos a numero si hace falta
+  para la asignacion posterior */
+  while (fgets(line, WORD_SIZE, file)) {
+    /* comprobamos que se trate de nuestros datos para los objetos */
+    if (strncmp("#l:", line, 3) == 0){
+      toks = strtok(line +3, "|");
+      id = atol(toks);
+      toks = strtok(NULL, "|");
+			strcpy(name, toks);
+      toks = strtok(NULL, "|");
+      position = atol(toks);
+
+
+      #ifdef DEBUG
+            printf("Leido: %ld|%s|%ld\n", id, name, position);/*NO SE SI HAY QUE METER ALGUN PARAMETRO MÁS*/
+      #endif
+
+      /* creamos un enlace con la id que se lee del fichero de  */
+      link = link_create(id);
+
+      /* En caso de crearse correctamente, añadimos el
+        enlace al juego y le asignamos parámetros */
+      if (link != NULL) {
+    	  link_set_name(link, name);
+        link_set_location(link, position);
+        space_add_link(game_get_space(game, position), id);
+        game_add_link(game, link);
       }
     }
   }
