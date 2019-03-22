@@ -21,6 +21,7 @@ struct _Game{
   Command *last_cmd;
   Player *player;
   Object *object[MAX_OBJECTS + 1];
+  Link *links[MAX_LINKS + 1];
   Die *die;
 };
 /**
@@ -94,6 +95,10 @@ Game* game_create(){
   }
 
   newGame->last_cmd = NULL;
+
+  for(i=0; i < MAX_LINKS; i++){
+    newGame->links[i] = NULL;
+  }
 
   return newGame;
 }
@@ -533,28 +538,50 @@ void game_callback_back(Game* game) {
 void game_callback_take(Game* game){
   int i = 0;
   Id aux_id = NO_ID;
+  Inventory *inv;
 
   if(!game){
     return;
   }
+  /*Guarda el inventario del jugador*/
+  inv = player_get_inventory(game->player);
 
+  /*Recorre los objetos*/
   for(i=0; i<MAX_OBJECTS; i++){
-    if(player_get_object(game->player) == NO_ID){ /*Comprueba que el jugador no tiene objeto*/
-      if(game->object[i] != NULL){
-        /*Compara el nombre del objeto con el que se le pasa por el comando*/
-        if(strcmp(object_get_name(game->object[i]),command_get_object(game->last_cmd)) == 0){
-          aux_id = object_get_id(game->object[i]);
-          /*Comprueba que el jugador y el objeto están en la misma casilla*/
-          if(game_get_player_location(game) == game_get_object_location(game, aux_id)){
-            /*Pasa la id del objeto al objeto del jugador*/
-            player_set_object(game->player, object_get_id(game->object[i]));
-            /*Establece que el objeto no se encuentra en ninguna casilla*/
+    /*Comprueba que no tiene el inventario lleno*/
+    if(inventory_get_num_objects(inv) != MAX_NUM_ID){
+      if(game->object[i] != NULL){ /*Comprueba que HAY un objeto*/
+        if(strcmp(object_get_name(game->object[i]),command_get_object(game->last_cmd)) == 0){ /*Comprueba que el objeto es igual al que hemos pasado por comando*/
+          aux_id = object_get_id(game->object[i]); /*Guarda el id del objeto*/
+          if(game_get_player_location(game) == game_get_object_location(game, aux_id)){ /*Comprueba que jugador y objeto estan en la misma casilla*/
+            player_add_element(game->player, aux_id)/*Añade el id del objeto al inventario*/
             object_set_location(game->object[i], NO_ID);
           }
         }
       }
     }
   }
+
+
+
+/*Antigua Implementacion*/
+/*  for(i=0; i<MAX_OBJECTS; i++){
+/*    if(player_get_object(game->player) == NO_ID){ /*Comprueba que el jugador no tiene objeto*/
+/*      if(game->object[i] != NULL){        /*Compara el nombre del objeto con el que se le pasa por el comando*/
+/*        if(strcmp(object_get_name(game->object[i]),command_get_object(game->last_cmd)) == 0){
+/*          aux_id = object_get_id(game->object[i]);
+/*          /*Comprueba que el jugador y el objeto están en la misma casilla*/
+/*          if(game_get_player_location(game) == game_get_object_location(game, aux_id)){
+/*            /*Pasa la id del objeto al objeto del jugador*/
+/*            player_set_object(game->player, object_get_id(game->object[i]));
+/*            /*Establece que el objeto no se encuentra en ninguna casilla*/
+/*            object_set_location(game->object[i], NO_ID);
+          }
+        }
+      }
+    }
+  }
+  */
 
 return;
 }
