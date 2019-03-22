@@ -13,6 +13,7 @@
 
 #include "types.h"
 #include "object.h"
+#include "inventory.h"
 /**
 * @brief La estructura de un jugador
 *
