@@ -13,6 +13,7 @@
 
 #include "types.h"
 #define NUM_IDS 2
+#define MAX_LINKS 31
 
 /**
 * @brief La estructura de un link

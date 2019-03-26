@@ -74,7 +74,7 @@ Game* game_create(){
 
   newGame = (Game*)malloc(sizeof(Game));
   if(newGame == NULL){
-    return ERROR;
+    return NULL;
   }
 
   for (i = 0; i < MAX_SPACES; i++){
@@ -83,11 +83,11 @@ Game* game_create(){
 
 
   if((newGame->player = player_create(1)) == NULL){
-    return ERROR;
+    return NULL;
   }
 
   if((newGame->die = die_create(1)) == NULL){
-    return ERROR;
+    return NULL;
   }
 
   for(i=0; i<MAX_OBJECTS; i++){
@@ -524,7 +524,7 @@ void game_callback_back(Game* game) {
     if (current_id == space_id) {
       current_id = space_get_north(game->spaces[i]);
       if (current_id != NO_ID) {
-	game_set_player_location(game, current_id);
+	       game_set_player_location(game, current_id);
       }
       return;
     }
@@ -538,7 +538,7 @@ void game_callback_back(Game* game) {
 void game_callback_take(Game* game){
   int i = 0;
   Id aux_id = NO_ID;
-  Inventory *inv;
+  Inventory *inv = NULL;
 
   if(!game){
     return;
@@ -554,35 +554,13 @@ void game_callback_take(Game* game){
         if(strcmp(object_get_name(game->object[i]),command_get_object(game->last_cmd)) == 0){ /*Comprueba que el objeto es igual al que hemos pasado por comando*/
           aux_id = object_get_id(game->object[i]); /*Guarda el id del objeto*/
           if(game_get_player_location(game) == game_get_object_location(game, aux_id)){ /*Comprueba que jugador y objeto estan en la misma casilla*/
-            player_add_element(game->player, aux_id)/*Añade el id del objeto al inventario*/
+            player_add_element(game->player, aux_id); /*Añade el id del objeto al inventario*/
             object_set_location(game->object[i], NO_ID);
           }
         }
       }
     }
   }
-
-
-
-/*Antigua Implementacion*/
-/*  for(i=0; i<MAX_OBJECTS; i++){
-/*    if(player_get_object(game->player) == NO_ID){ /*Comprueba que el jugador no tiene objeto*/
-/*      if(game->object[i] != NULL){        /*Compara el nombre del objeto con el que se le pasa por el comando*/
-/*        if(strcmp(object_get_name(game->object[i]),command_get_object(game->last_cmd)) == 0){
-/*          aux_id = object_get_id(game->object[i]);
-/*          /*Comprueba que el jugador y el objeto están en la misma casilla*/
-/*          if(game_get_player_location(game) == game_get_object_location(game, aux_id)){
-/*            /*Pasa la id del objeto al objeto del jugador*/
-/*            player_set_object(game->player, object_get_id(game->object[i]));
-/*            /*Establece que el objeto no se encuentra en ninguna casilla*/
-/*            object_set_location(game->object[i], NO_ID);
-          }
-        }
-      }
-    }
-  }
-  */
-
 return;
 }
 /**
@@ -591,23 +569,28 @@ return;
 *@return
 */
 void game_callback_drop(Game* game){
-  int aux;
-  Id pla_id = NO_ID;
-  Id obj_id = NO_ID;
+  int i;
+  Id aux_id = NO_ID;
+  Inventory *inv = NULL;
+  Id loc = NO_ID;
 
   if(!game){
     return;
   }
 
-  pla_id = game_get_player_location(game);
-  obj_id = player_get_object(game->player);
-  aux = game_get_object_num(game, obj_id);
+  inv = player_get_inventory(game->player);
+  loc = player_get_location(game->player);
 
-  /*Se le quita el objeto al jugador*/
-  player_set_object(game->player, NO_ID);
-  /*Se establece la ubicacion del objeto en la casilla
-   en la que se encuentra el jugador*/
-  object_set_location(game->object[aux], pla_id);
+  /*Recorre los objetos*/
+  for(i=0; i<MAX_OBJECTS;i++){
+    if(inventory_get_num_objects(inv) != 0){ /*Comprueba que tiene objetos*/
+      if(strcmp(object_get_name(game->object[i]), command_get_object(game->last_cmd)) == 0){/*comprueba que el objeto del bucle es igual al pasado por cmd*/
+        aux_id = object_get_id(game->object[i]);
+        player_delete_element(game->player, aux_id);/**Eliminamos obj del inventario*/
+        object_set_location(game->object[i], loc); /*Asignamos la posicion del jugador al objeto*/
+      }
+    }
+  }
 return;
 }
 /**
@@ -644,7 +627,7 @@ void game_callback_left(Game* game){
     if (current_id == space_id) {
       current_id = space_get_west(game->spaces[i]);
       if (current_id != NO_ID) {
-  game_set_player_location(game, current_id);
+        game_set_player_location(game, current_id);
       }
       return;
     }
@@ -670,7 +653,7 @@ void game_callback_right(Game* game){
     if (current_id == space_id) {
       current_id = space_get_east(game->spaces[i]);
       if (current_id != NO_ID) {
-  game_set_player_location(game, current_id);
+        game_set_player_location(game, current_id);
       }
       return;
     }

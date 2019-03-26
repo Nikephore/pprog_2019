@@ -23,7 +23,7 @@ struct _Link{
   char name[WORD_SIZE + 1];
   Id ids_spaces[NUM_IDS];
   BOOL state;
-}
+};
 
 /*
 *
@@ -49,7 +49,7 @@ Link* link_create(Id id, Id id_space1, Id id_space2){
     }
 
     newLink->id = id;
-    newLink->name[0] = "\0";
+    newLink->name[0] = '\0';
     newLink->ids_spaces[0] = id_space1;
     newLink->ids_spaces[1] = id_space2;
     newLink->state = FALSE;
@@ -98,7 +98,7 @@ STATUS link_set_id(Link* link, Id id){
 */
 Id link_get_id(Link* link){
   if(!link){
-    return NULL;
+    return NO_ID;
   }
   return link->id;
 }
@@ -112,7 +112,7 @@ Id link_get_id(Link* link){
 *
 */
 STATUS link_set_name(Link* link, const char* name){
-  if(!link || name == \0){
+  if(!link || name == '\0'){
     return ERROR;
   }
   if (!strcpy(link->name, name)) {
@@ -178,7 +178,7 @@ Id link_get_space2_id(Link* link){
 */
 STATUS link_change_state(Link* link, Id space1, Id space2){
   if (!link || space1 == NO_ID || space2 == NO_ID){
-    return ERROR
+    return ERROR;
   }
 
   if(link->ids_spaces[0] == space1 && link->ids_spaces[1] == space2){

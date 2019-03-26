@@ -17,6 +17,7 @@
 #include "die.h"
 #include "types.h"
 #include "set.h"
+#include "link.h"
 /**
 * @brief La estructura de nuestro juego
 *
