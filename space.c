@@ -29,6 +29,7 @@ struct _Space {
   Id link_east;
   Id link_west;
   Set *set;
+  Link *link;
 };
 /**
 *@brief creamos el espacio
@@ -56,6 +57,7 @@ Space* space_create(Id id) {
   newSpace->link_west = NO_ID;
 
   newSpace->set = set_create();
+  newSpace->link = link_create();
 
   return newSpace;
 }
@@ -72,6 +74,7 @@ STATUS space_destroy(Space* space) {
   if(space->set != NULL){
     set_destroy(space->set);
   }
+  
 
   free(space);
   space = NULL;
@@ -347,6 +350,21 @@ STATUS space_delete_object(Space *space, Id id){
 
   return OK;
 }
+
+/**
+*@brief establecemos la id del link
+*@param1 space. Espacio del cual queremos establecer la id
+*@param2 id. Id del link que se quiere establecer en el espacio
+*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
+*/
+STATUS space_add_link(Space *space, Id id){
+  
+  if(space == NULL || id == NO_ID ){
+    return ERROR;
+  }
+
+  return OK;
+}
 /**
 *@brief genera la descripcion grafica de nuestros objetos
 *@param1 space. Espacio del cual queremos establecer la id
@@ -402,6 +420,7 @@ char* space_get_gdesc_illustration(Space* space, int i){
 */
 
 STATUS space_check_object(Space* space, Id id){
+  
   if(!space || id == NO_ID){
     return ERROR;
   }
