@@ -14,6 +14,7 @@
 #include "types.h"
 #include "object.h"
 #include "set.h"
+#include "link.h"
 /**
 * @brief La estructura de un espacio
 *
@@ -145,9 +146,9 @@ char* space_get_description(Space* space);
 STATUS space_print(Space* space);
 
 /**
-*@brief establecemos la id del espacio
+*@brief añadimos un objeto al espacio
 *@param1 space. Espacio del cual queremos establecer la id
-*@param2 id. Id que se quiere establecer en el espacio
+*@param2 id. Id del objeto que se quiere establecer en el espacio
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
 
@@ -169,6 +170,15 @@ STATUS space_delete_object(Space *space, Id id);
 */
 
 int space_get_num_object(Space* space);
+
+/**
+*@brief establecemos la id del link
+*@param1 space. Espacio del cual queremos establecer la id
+*@param2 id. Id del link que se quiere establecer en el espacio
+*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
+*/
+
+STATUS space_add_link(Space *space, Id id);
 
 /**
 *@brief genera la descripcion grafica de nuestros objetos
