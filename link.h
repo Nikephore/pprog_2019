@@ -1,9 +1,9 @@
 /**
- * @brief
+ * @brief Se encarga de las funciones y la gestion de los links
  *
  * @file link.h
  * @authors Victor Perea
- * @version 1.0
+ * @version 1.1
  * @date 15/03/2019
  * @copyright GNU Public License
  */

@@ -1,9 +1,9 @@
 /**
- * @brief
+ * @brief Se encarga de las funciones y la gestion de los links
  *
  * @file link.c
  * @authors Victor Perea
- * @version 1.0
+ * @version 1.1
  * @date 15/03/2019
  * @copyright GNU Public License
  */
@@ -173,8 +173,6 @@ Id link_get_space2_id(Link* link){
 * @return: Devuelve OK si ha cambiado el estado del link y error si no lo ha cambiado
 *
 */
-
-
 STATUS link_change_state(Link* link){
   if (!link){
     return ERROR;
