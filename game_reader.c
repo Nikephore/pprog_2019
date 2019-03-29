@@ -167,13 +167,20 @@ STATUS game_reader_load_links (Game* game, char*filename){
   char name[WORD_SIZE] = "";
   char* toks = NULL;
   Id id = NO_ID;
+  Id space1 = NO_ID, space2 = NO_ID, space3 = NO_ID;
   Id position = NO_ID;
   Object* object = NULL;
   STATUS status = OK;
 
   /* validamos que nos llega una direccion de memoria valida donde hemos cargado nuestros datos */
   if (!filename) {
-    return ERROR;
+    return ERR
+void test2_object_set_name()
+{
+	Object *s = object_create("name", 5, TRUE, FALSE, NO_ID, TRUE, FALSE);
+	PRINT_TEST_RESULT(object_set_name(s, "hola") == OK);
+}
+OR;
   }
 
   /* abrimos el archivo para leerlo posteriormente */
@@ -193,21 +200,25 @@ STATUS game_reader_load_links (Game* game, char*filename){
       toks = strtok(NULL, "|");
 			strcpy(name, toks);
       toks = strtok(NULL, "|");
-      position = atol(toks);
+      space1 = atol(toks);
+      toks = strtok(NULL, "|");
+      space2 = atol(toks);
+      toks = strtok(NULL, "|");
+      space3 = atol(toks);
 
 
       #ifdef DEBUG
-            printf("Leido: %ld|%s|%ld\n", id, name, position);/*NO SE SI HAY QUE METER ALGUN PARAMETRO MÁS*/
+            printf("Leido: %ld|%s|%ld|%ld|%ld\n", id, name, space1, space2, space3);/*NO SE SI HAY QUE METER ALGUN PARAMETRO MÁS*/
       #endif
 
       /* creamos un enlace con la id que se lee del fichero de  */
-      link = link_create(id);
+      link = link_create(id, space1, space2);
 
       /* En caso de crearse correctamente, añadimos el
         enlace al juego y le asignamos parámetros */
       if (link != NULL) {
     	  link_set_name(link, name);
-        link_set_location(link, position);
+        link_set_id(link, id);
         space_add_link(game_get_space(game, position), id);
         game_add_link(game, link);
       }

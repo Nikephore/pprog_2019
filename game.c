@@ -23,6 +23,7 @@ struct _Game{
   Object *object[MAX_OBJECTS + 1];
   Link *links[MAX_LINKS + 1];
   Die *die;
+	Id inspect;
 };
 /**
    Define el tipo de función para los callbacks
@@ -95,6 +96,7 @@ Game* game_create(){
   }
 
   newGame->last_cmd = NULL;
+	newGame->inspect = NO_ID;
 
   for(i=0; i < MAX_LINKS; i++){
     newGame->links[i] = NULL;
@@ -372,6 +374,19 @@ T_Command game_get_last_command(Game* game){
   return command_get_cmd(game->last_cmd);
 }
 
+char* game_get_space_description(Game* game){
+
+  Id aux_id = NO_ID;
+
+  if(game == NULL){
+    return NULL;
+  }
+
+  aux_id = game_get_player_location(game);
+
+  return space_get_description(game->spaces[aux_id]);
+}
+
 /**
    Funciones de establecimiento de datos (setters)
 */
@@ -410,6 +425,17 @@ STATUS game_set_object_location(Game* game, Id id) {
   object_set_location(game->object[i], id);
 
   return OK;
+}
+
+Id game_inspect_select(Game* game){
+
+  if(game == NULL){
+    return NO_ID;
+  }
+
+  game_callback_inspect(game);
+
+  return game->inspect;
 }
 
 /**
@@ -662,6 +688,32 @@ void game_callback_right(Game* game){
 }
 
 void game_callback_inspect(Game* game){
+  int i = 0;
+  Id aux_id = NO_ID;
 
+  game->inspect = NO_ID; 
+
+
+
+  if(!game){
+    return;
+  }
+
+  if(strcmp(command_get_imput(game->last_cmd),"space") == 0 || strcmp(command_get_imput(game->last_cmd),"s") == 0){
+    game->inspect = 0;
+    return;
+  }
+
+  for(i=0; i<MAX_OBJECTS; i++){
+
+    if(game->object[i] != NULL){
+    /*Compara el nombre del objeto con el que se le pasa por el comando*/
+      if(strcmp(object_get_name(game->object[i]),command_get_imput(game->last_cmd)) == 0){
+        aux_id = game_get_object_id(game, i);
+        game->inspect = aux_id;
+        return;
+      }
+    }
+  }
   return;
 }
