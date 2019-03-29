@@ -13,6 +13,7 @@
 
 #include "types.h"
 #define NUM_IDS 2
+#define MAX_LINKS 31
 
 /**
 * @brief La estructura de un link
@@ -99,15 +100,12 @@ Id link_get_space1_id(Link* link);
 Id link_get_space2_id(Link* link);
 /*
 *
-* @brief: accede al link y si los ids de los espacios que llegan por argumento
-* coinciden con los ids de los espacios que une ese link, cambia el state a TRUE (abierto)
+* @brief: accede al link y cambia el estado del link
 * @params: recibe como parámetro de entrada un link
-* @params1: recibe como parámetro de entrada un id de un espacio
-* @params2: recibe como parámetro de entrada un id de un espacio
-* @return:
+* @return: Devuelve OK si ha cambiado el estado del link y error si no lo ha cambiado
 *
 */
-STATUS link_change_state(Link* link, Id space1, Id space2);
+STATUS link_change_state(Link* link);
 
 /**
 *@brief imprime el link por pantalla
