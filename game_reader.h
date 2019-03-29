@@ -15,6 +15,7 @@
 #include "types.h"
 #include "space.h"
 #include "object.h"
+#include "link.h"
 
 #define MAX_STRING 3
 

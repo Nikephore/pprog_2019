@@ -173,6 +173,8 @@ Id link_get_space2_id(Link* link){
 * @return: Devuelve OK si ha cambiado el estado del link y error si no lo ha cambiado
 *
 */
+
+
 STATUS link_change_state(Link* link){
   if (!link){
     return ERROR;
