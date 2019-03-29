@@ -551,7 +551,7 @@ void game_callback_take(Game* game){
     /*Comprueba que no tiene el inventario lleno*/
     if(inventory_get_num_objects(inv) != MAX_NUM_ID){
       if(game->object[i] != NULL){ /*Comprueba que HAY un objeto*/
-        if(strcmp(object_get_name(game->object[i]),command_get_object(game->last_cmd)) == 0){ /*Comprueba que el objeto es igual al que hemos pasado por comando*/
+        if(strcmp(object_get_name(game->object[i]), command_get_input(game->last_cmd)) == 0){ /*Comprueba que el objeto es igual al que hemos pasado por comando*/
           aux_id = object_get_id(game->object[i]); /*Guarda el id del objeto*/
           if(game_get_player_location(game) == game_get_object_location(game, aux_id)){ /*Comprueba que jugador y objeto estan en la misma casilla*/
             player_add_element(game->player, aux_id); /*Añade el id del objeto al inventario*/
@@ -584,7 +584,7 @@ void game_callback_drop(Game* game){
   /*Recorre los objetos*/
   for(i=0; i<MAX_OBJECTS;i++){
     if(inventory_get_num_objects(inv) != 0){ /*Comprueba que tiene objetos*/
-      if(strcmp(object_get_name(game->object[i]), command_get_object(game->last_cmd)) == 0){/*comprueba que el objeto del bucle es igual al pasado por cmd*/
+      if(strcmp(object_get_name(game->object[i]), command_get_input(game->last_cmd)) == 0){/*comprueba que el objeto del bucle es igual al pasado por cmd*/
         aux_id = object_get_id(game->object[i]);
         player_delete_element(game->player, aux_id);/**Eliminamos obj del inventario*/
         object_set_location(game->object[i], loc); /*Asignamos la posicion del jugador al objeto*/
