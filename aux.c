@@ -1,8 +1,15 @@
-BOOL space_search_object(Space *space, Id id){
+BOOL set_compare(Set *set, Id id){
+  int i = 0;
 
-  if(space == NULL || id == NO_ID){
+  if(set == NULL || id == NO_ID){
     return FALSE;
   }
 
-  return set_compare(space->set, id);
+  for(i=0; i < set->num_elem; i++){
+    if(set->array_id[i] == id){
+      return TRUE;
+    }
+  }
+
+  return FALSE;
 }
