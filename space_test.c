@@ -2,10 +2,9 @@
  * @brief It tests space module
  *
  * @file space_test.c
- * @author Profesores Pprog
- * @version 2.0
- * @date 16-01-2015
- * @updated 19-01-2016
+ * @author Victor Perea
+ * @version 1.0
+ * @date 01/04/2019
  * @copyright GNU Public License
  */
 
