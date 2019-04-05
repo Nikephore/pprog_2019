@@ -1,15 +1,8 @@
-BOOL inventory_compare(Inventory *inv, Id id){
-  int i;
+BOOL space_search_object(Space *space, Id id){
 
-  if(inv == NULL || id == NO_ID){
+  if(space == NULL || id == NO_ID){
     return FALSE;
   }
 
-  for(i=0; i<inventory_get_num_objects(inv); i++){
-    if(inventory_get_object_id(inv, i) == id){
-      return TRUE;
-    }
-  }
-
-  return FALSE;
+  return set_compare(space->set, id);
 }
