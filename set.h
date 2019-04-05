@@ -62,7 +62,7 @@ STATUS set_del_object(Set *set, Id id);
 * @return: devuelve ERROR si no se ha liberado la memoria, u OK si lo ha hecho correctamente
 *
 */
-STATUS set_compare(Set *set, Id id);
+BOOL set_compare(Set *set, Id id);
 /*
 *
 * @brief: comprueba si nuestro set esta completo de objetos

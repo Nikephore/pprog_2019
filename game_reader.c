@@ -26,6 +26,7 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
+  char des[WORD_SIZE] = "";
   char* aux = "   -   ";
   char* illu[MAX_STRING];
   char* toks = NULL;
@@ -53,6 +54,8 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
       toks = strtok(NULL, "|");
       strcpy(name, toks);
       toks = strtok(NULL, "|");
+      strcpy(des, toks);
+      toks = strtok(NULL, "|");
       north = atol(toks);
       toks = strtok(NULL, "|");
       east = atol(toks);
@@ -60,6 +63,7 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
       south = atol(toks);
       toks = strtok(NULL, "|");
       west = atol(toks);
+
 
       for(i=0; i<MAX_STRING; i++){
         illu[i] = strtok(NULL,"|\n");
@@ -70,11 +74,12 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
       }
 
 #ifdef DEBUG
-      printf("Leido: %ld|%s|%ld|%ld|%ld|%ld\n", id, name, north, east, south, west);
+      printf("Leido: %ld|%s|%s|%ld|%ld|%ld|%ld\n", id, name, des, north, east, south, west);
 #endif
       space = space_create(id);
       if (space != NULL) {
 	       space_set_name(space, name);
+         space_set_description(space, des);
 	       space_set_north(space, north);
 	       space_set_east(space, east);
 	       space_set_south(space, south);
@@ -102,6 +107,7 @@ STATUS game_reader_load_objects(Game* game, char* filename){
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
+  char des[WORD_SIZE] = "";
   char* toks = NULL;
   Id id = NO_ID;
   Id position = NO_ID;
@@ -131,9 +137,11 @@ STATUS game_reader_load_objects(Game* game, char* filename){
       strcpy(name, toks);
       toks = strtok(NULL, "|");
       position = atol(toks);
+      toks = strtok(NULL, "|");
+      strcpy(des, toks);
 
 #ifdef DEBUG
-      printf("Leido: %ld|%s|%ld\n", id, name, position);
+      printf("Leido: %ld|%s|%ld|%s\n", id, name, position, des);
 #endif
 
 
@@ -144,6 +152,7 @@ STATUS game_reader_load_objects(Game* game, char* filename){
         objeto al juego y le asignamos parámetros */
       if (object != NULL) {
     	  object_set_name(object, name);
+        object_set_description(object, des);
         object_set_location(object, position);
         space_add_object(game_get_space(game, position), id);
         game_add_object(game, object);
@@ -167,20 +176,14 @@ STATUS game_reader_load_links (Game* game, char*filename){
   char name[WORD_SIZE] = "";
   char* toks = NULL;
   Id id = NO_ID;
-  Id space1 = NO_ID, space2 = NO_ID, space3 = NO_ID;
+  Id space1 = NO_ID, space2 = NO_ID;
   Id position = NO_ID;
-  Object* object = NULL;
+  Link* link = NULL;
   STATUS status = OK;
 
   /* validamos que nos llega una direccion de memoria valida donde hemos cargado nuestros datos */
   if (!filename) {
-    return ERR
-void test2_object_set_name()
-{
-	Object *s = object_create("name", 5, TRUE, FALSE, NO_ID, TRUE, FALSE);
-	PRINT_TEST_RESULT(object_set_name(s, "hola") == OK);
-}
-OR;
+    return ERROR;
   }
 
   /* abrimos el archivo para leerlo posteriormente */
@@ -203,12 +206,9 @@ OR;
       space1 = atol(toks);
       toks = strtok(NULL, "|");
       space2 = atol(toks);
-      toks = strtok(NULL, "|");
-      space3 = atol(toks);
-
 
       #ifdef DEBUG
-            printf("Leido: %ld|%s|%ld|%ld|%ld\n", id, name, space1, space2, space3);/*NO SE SI HAY QUE METER ALGUN PARAMETRO MÁS*/
+            printf("Leido: %ld|%s|%ld|%ld|\n", id, name, space1, space2);
       #endif
 
       /* creamos un enlace con la id que se lee del fichero de  */
@@ -216,12 +216,27 @@ OR;
 
       /* En caso de crearse correctamente, añadimos el
         enlace al juego y le asignamos parámetros */
-      if (link != NULL) {
-    	  link_set_name(link, name);
-        link_set_id(link, id);
-        space_add_link(game_get_space(game, position), id);
-        game_add_link(game, link);
+      if (!link) {
+        return ERROR;
       }
+
+    	link_set_name(link, name);
+      link_set_id(link, id);
+      game_add_link(game, link);
+      space_add_link(game_get_space(game, position), id);
+
+      if(link_get_space1_id(link) == link_get_space2_id(link)+1){
+        space_set_south(game_get_space(game, link_get_space1_id(link)), link_get_id(link));
+        space_set_north(game_get_space(game, link_get_space2_id(link)), link_get_id(link));
+      }else if(link_get_space1_id(link) > link_get_space2_id(link)){
+        space_set_east(game_get_space(game, link_get_space1_id(link)), link_get_id(link));
+        if(link_get_space1_id(link) == 8 && link_get_space2_id(link) == 16){
+          space_set_west(game_get_space(game, link_get_space1_id(link)), link_get_id(link));
+        }else{
+          space_set_west(game_get_space(game, link_get_space1_id(link)), link_get_id(link));
+        }
+      }
+
     }
   }
   /* Si hay algún fallo en el fichero devolvemos ERROR */

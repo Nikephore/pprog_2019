@@ -36,7 +36,7 @@ int inventory_get_num_objects(Inventory *inv);
 
 Id inventory_get_object_id(Inventory *inv, int i);
 
-STATUS inventory_compare(Inventory *inv, Id id);
+BOOL inventory_compare(Inventory *inv, Id id);
 
 /*Funciones de establecimiento de datos del inventario*/
 

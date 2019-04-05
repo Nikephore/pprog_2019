@@ -18,6 +18,7 @@
 #include "types.h"
 #include "set.h"
 #include "link.h"
+#include "inventory.h"
 /**
 * @brief La estructura de nuestro juego
 *
@@ -90,8 +91,9 @@ void   game_print_data(Game* game);
 *@param2 id. La id del espacio a buscar
 *@return se devuelve la direccion del espacio que coincide con la id, o NULL si ninguno coincide
 */
-
 Space* game_get_space(Game* game, Id id);
+
+Link* game_get_link(Game* game, Id id);
 
 /**
 *@brief se obtiene el objeto al cual pertenece una id
@@ -99,7 +101,6 @@ Space* game_get_space(Game* game, Id id);
 *@param2 id. La id del objeto a buscar
 *@return se devuelve la direccion del objeto que coincide con la id, o NULL si ninguno coincide
 */
-
 Object* game_get_object(Game* game, Id id);
 /**
 *@brief se obtiene el id del objeto
@@ -149,6 +150,9 @@ Id game_get_object_location(Game* game, Id id);
 */
 char * game_get_object_name(Game* game, Id id);
 
+char* game_get_description(Game* game);
+
+char* game_get_object_description(Game* game, Id id);
 /**
 *@brief obtiene el ultimo comando introducido
 *@param1 game. El juego en el que buscamos el ultimo comando
@@ -173,6 +177,14 @@ STATUS game_add_space(Game* game, Space* space);
 *@return devuelve OK si todo ha ido bien y si no, devuelve ERROR
 */
 STATUS game_add_object(Game* game, Object* object);
+
+/**
+*@brief añade un link al juego
+*@param1 game. El juego al que añadimos el link
+*@param2 space. El link que añadimos al juego
+*@return devuelve OK si todo ha ido bien y si no, devuelve ERROR
+*/
+STATUS game_add_link(Game* game, Link *link);
 
 /**
 *@brief  obtiene la id de un espacio en el juego
@@ -207,4 +219,9 @@ STATUS game_set_object_location(Game* game, Id id);
 *@return devuelve el espacio donde se desarrolla e juego, o NULL si hubo algun problema
 */
 Space* game_get_space(Game* game, Id id);
+
+Id game_inspect_select(Game* game);
+
+char* game_get_space_description(Game* game);
+
 #endif

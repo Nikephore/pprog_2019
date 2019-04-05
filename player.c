@@ -97,6 +97,25 @@ Id player_get_location(Player * p){
 }
 
 /**
+*@brief obtiene el número de objetos de un jugador
+*@param1 p. El jugador del que queremos obtener el nombre
+*@return devuelve el número de objetos del jugador.
+*/
+int player_get_num_objects(Player * p){
+  if(!p)
+    return -1;
+
+  return inventory_get_num_objects(p->inventory);
+}
+
+BOOL player_search_object(Player * p, Id id){
+  if(!p)
+    return FALSE;
+
+  return inventory_compare(p->inventory, id);
+}
+
+/**
 *@brief cambia la id de un jugador
 *@param1 p. El jugador del que queremos cambiar la Id
 *@param2 id. Id para sutituir la id actual del jugador
@@ -200,13 +219,17 @@ STATUS player_delete_element(Player *player, Id id){
 *@param2 id. Id del elemento a comprobar.
 *@return  devuelve OK si se pudo cambiar o ERROR si fallo algo.
 */
-STATUS player_check_element(Player* player, Id id){
+/*STATUS player_check_element(Player* player, Id id){
+  STATUS check = ERROR;
+
   if(!player || id == NO_ID){
     return ERROR;
   }
 
-  return inventory_compare(player->inventory, id);
-}
+  check = inventory_compare(player->inventory, id);
+
+  return check;
+}*/
 /*
 *@brief devuelve el inventario.
 *@param1 player. El jugador donde se quiere devolver el inventario..
@@ -216,5 +239,10 @@ Inventory* player_get_inventory(Player* player){
   if (!player) {
     return NULL;
   }
+
+  if(player->inventory == NULL){
+    player->inventory = inventory_create();
+  }
+
   return player->inventory;
 }

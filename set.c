@@ -119,20 +119,20 @@ STATUS set_del_object(Set *set, Id id){
 * @return: devuelve ERROR si no se ha liberado la memoria, u OK si lo ha hecho correctamente
 *
 */
-STATUS set_compare(Set *set, Id id){
+BOOL set_compare(Set *set, Id id){
   int i = 0;
 
   if(set == NULL || id == NO_ID){
-    return ERROR;
+    return TRUE;
   }
 
   for(i=0; i < set->num_elem; i++){
     if(set->array_id[i] == id){
-      return OK;
+      return TRUE;
     }
   }
 
-  return ERROR;
+  return FALSE;
 }
 /*
 *

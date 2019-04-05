@@ -218,9 +218,9 @@ char* space_get_gdesc_illustration(Space* space, int i);
 *@brief comprueba los objetos de nuestro espacio
 *@param1 space. Espacio del cual queremos establecer la id
 *@param2 id. La id del objecto a comprobar
-*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
+*@return devuelve TRUE si todo ha ido bien y si no devuelve FALSE
 */
+BOOL space_search_object(Space *space, Id id);
 
-STATUS space_check_object(Space* space, Id id);
 
 #endif

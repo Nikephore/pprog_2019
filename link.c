@@ -39,22 +39,23 @@ Link* link_create(Id id, Id id_space1, Id id_space2){
 
   Link *newLink = NULL;
 
-  if (id == NO_ID)
+  if (id == NO_ID || id_space1 == NO_ID || id_space2 == NO_ID){
     return NULL;
+  }
 
-    newLink = (Link*) malloc(sizeof(Link));
+  newLink = (Link*) malloc(sizeof(Link));
 
-    if (newLink == NULL) {
-      return NULL;
-    }
+  if (newLink == NULL) {
+    return NULL;
+  }
 
-    newLink->id = id;
-    newLink->name[0] = '\0';
-    newLink->ids_spaces[0] = id_space1;
-    newLink->ids_spaces[1] = id_space2;
-    newLink->state = FALSE;
+  newLink->id = id;
+  newLink->name[0] = '\0';
+  newLink->ids_spaces[0] = id_space1;
+  newLink->ids_spaces[1] = id_space2;
+  newLink->state = FALSE;
 
-    return newLink;
+  return newLink;
 }
 
 /*
@@ -112,7 +113,7 @@ Id link_get_id(Link* link){
 *
 */
 STATUS link_set_name(Link* link, const char* name){
-  if(!link || name == '\0'){
+  if(!link || name == NULL){
     return ERROR;
   }
   if (!strcpy(link->name, name)) {
@@ -145,7 +146,7 @@ const char* link_get_name(Link* link){
 */
 Id link_get_space1_id(Link* link){
   if (!link){
-    return ERROR;
+    return NO_ID;
   }
 
   return link->ids_spaces[0];
@@ -160,7 +161,7 @@ Id link_get_space1_id(Link* link){
 */
 Id link_get_space2_id(Link* link){
   if (!link){
-    return ERROR;
+    return NO_ID;
   }
 
   return link->ids_spaces[1];
@@ -187,6 +188,8 @@ STATUS link_change_state(Link* link){
     link->state = TRUE;
     return OK;
   }
+
+  return ERROR;
 }
 
 /**

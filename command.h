@@ -60,7 +60,7 @@ T_Command command_get_cmd(Command* command);
 * @return: devuelve el objeto al que se refiere el comando
 *
 */
-char *command_get_object(Command* command);
+char *command_get_imput(Command* command);
 /*
 *
 * @brief: se encarga de copiar comandos

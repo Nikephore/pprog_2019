@@ -60,17 +60,19 @@ int main(){
     set_del_object(set, i);
   }
 
+  /*Imprimimos el set por pantalla tras borrar los objetos*/
+  set_print(set);
+
   /*comprobamos si un elemento está en el set*/
   id_test = rand()%13;
-  if(set_compare(set, aux) == ERROR){
+  if(set_compare(set, aux) == FALSE){
     printf("El elemento %ld NO se encuentra en el set\n", id_test);
   }
-  else if(set_compare(set, aux) == OK){
+  else if(set_compare(set, aux) == TRUE){
     printf("El elemento %ld SÍ se encuentra en el set\n", id_test);
   }
 
-  /*Imprimimos el set por pantalla tras borrar los objetos*/
-  set_print(set);
+
 
   /*destruimos el set*/
   set_destroy(set);

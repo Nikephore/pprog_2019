@@ -51,6 +51,7 @@ Space* space_create(Id id) {
 
   newSpace->id = id;
   newSpace->name[0] = '\0';
+  newSpace->description[0] = '\0';
   newSpace->link_north = NO_ID;
   newSpace->link_south = NO_ID;
   newSpace->link_east = NO_ID;
@@ -74,7 +75,7 @@ STATUS space_destroy(Space* space) {
   if(space->set != NULL){
     set_destroy(space->set);
   }
-  
+
 
   free(space);
   space = NULL;
@@ -241,7 +242,7 @@ Id space_get_west(Space* space) {
 */
 Set* space_get_object(Space* space){
   if (!space) {
-    return FALSE;
+    return NULL;
   }
   return space->set;
 }
@@ -358,7 +359,7 @@ STATUS space_delete_object(Space *space, Id id){
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
 STATUS space_add_link(Space *space, Id id){
-  
+
   if(space == NULL || id == NO_ID ){
     return ERROR;
   }
@@ -416,13 +417,12 @@ char* space_get_gdesc_illustration(Space* space, int i){
 *@brief comprueba los objetos de nuestro espacio
 *@param1 space. Espacio del cual queremos establecer la id
 *@param2 id. La id del objecto a comprobar
-*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
+*@return devuelve TRUE si todo ha ido bien y si no devuelve FALSE
 */
+BOOL space_search_object(Space *space, Id id){
 
-STATUS space_check_object(Space* space, Id id){
-  
-  if(!space || id == NO_ID){
-    return ERROR;
+  if(space == NULL || id == NO_ID){
+    return FALSE;
   }
 
   return set_compare(space->set, id);

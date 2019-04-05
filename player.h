@@ -50,6 +50,14 @@ Id player_get_id(Player * p);
 */
 Id player_get_location(Player * p);
 
+/**
+*@brief obtiene el número de objetos de un jugador
+*@param1 p. El jugador del que queremos obtener el nombre
+*@return devuelve el número de objetos del jugador.
+*/
+int player_get_num_objects(Player * p);
+
+BOOL player_search_object(Player * p, Id id);
 
 /**
 *@brief obtiene el nombre de un jugador

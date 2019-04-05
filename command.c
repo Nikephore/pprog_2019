@@ -23,7 +23,7 @@
 */
 struct _Command{
   T_Command cmd;
-  char obj[WORD_SIZE + 1];
+  char imp[WORD_SIZE + 1];
 };
 
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Next", "Back",
@@ -44,7 +44,7 @@ Command* command_create(){
   }
 
   new_command->cmd = NO_CMD;
-  new_command->obj[0] = '\0';
+  new_command->imp[0] = '\0';
 
   return new_command;
 }
@@ -74,7 +74,7 @@ T_Command command_get_cmd(Command *command){
   if(!command){
     return NO_CMD;
   }
-
+  printf("Cmd2: %d\n", command->cmd);
   return command->cmd;
 }
 /*
@@ -84,12 +84,11 @@ T_Command command_get_cmd(Command *command){
 * @return: devuelve el objeto al que se refiere el comando
 *
 */
-char *command_get_object(Command *command){
+char *command_get_imput(Command *command){
   if(!command){
     return NULL;
   }
-
-  return command->obj;
+  return command->imp;
 }
 /*
 *
@@ -132,19 +131,19 @@ STATUS command_get_user_input(Command *command){
   aux=sscanf(buff, "%s %s", input, input1);
   if(aux > 0){
     command->cmd = UNKNOWN;
-    strcpy(command->obj,"");
+    strcpy(command->imp,"");
 
     while(command->cmd == UNKNOWN && i < N_CMD){
       if(!strcasecmp(input, short_cmd_to_str[i]) || !strcasecmp(input, cmd_to_str[i])){
         command->cmd = i + NO_CMD;
         if(aux > 1 && command->cmd == TAKE){
-          strcpy(command->obj, input1);
+          strcpy(command->imp, input1);
         }
         else if(aux > 1 && command->cmd == DROP){
-          strcpy(command->obj, input1);
+          strcpy(command->imp, input1);
         }
         else if(aux > 1 && command->cmd == INSPECT){
-          strcpy(command->obj, input1);
+          strcpy(command->imp, input1);
         }
       }
       else{

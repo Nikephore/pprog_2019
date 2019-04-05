@@ -22,7 +22,7 @@ struct _Object {
   Id id;
   Id location;
   char name[WORD_SIZE + 1];
-  char description[WORD_SIZE + 1];
+  char description[WORD_SIZE];
 };
 /*
 *
@@ -96,7 +96,8 @@ char* object_get_description(Object *obj){
   if(!obj){
     return NULL;
   }
-
+  printf("Llega\n");
+  printf("Odesc: %s\n", obj->description);
   return obj->description;
 }
 /*

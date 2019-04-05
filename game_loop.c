@@ -56,6 +56,7 @@ while ( (command_get_cmd(command) != EXIT) && !game_is_over(game) ){
         command_destroy(command);
         return 1;
       }
+      printf("Command %d\n", command_get_cmd(command));
       game_update(game, command);
 }
 

@@ -4,7 +4,7 @@ EJS = oca set_test die_test inventory_test clear
 SET_TEST=set.o set_test.o
 DIE_TEST=die.o die_test.o
 INVENTORY_TEST=inventory.o inventory_test.o set.o
-OCA=game.o game_loop.o graphic_engine.o command.o screen.o space.o player.o object.o game_reader.o die.o set.o inventory.o
+OCA=game.o game_loop.o graphic_engine.o command.o screen.o space.o player.o object.o game_reader.o die.o set.o link.o inventory.o
 
 all: $(EJS)
 
@@ -38,7 +38,7 @@ screen.o: screen.c screen.h
 space.o: space.c space.h types.h
 	$(CC) $(CFLAGS) -c -o space.o space.c
 
-player.o: player.c player.h
+player.o: player.c player.h inventory.h
 	$(CC) $(CFLAGS) -c -o player.o player.c
 
 object.o: object.c object.h
@@ -55,6 +55,9 @@ set.o: set.c set.h
 
 inventory.o: inventory.c inventory.h
 	$(CC) $(CFLAGS) -c -o inventory.o inventory.c
+
+link.o: link.c link.h
+	$(CC) $(CFLAGS) -c -o link.o link.c
 
 clear:
 	rm -f *.o

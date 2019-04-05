@@ -71,7 +71,7 @@ void graphic_engine_destroy(Graphic_engine *ge){
 */
 
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
-  Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID;
+  Id id_act = NO_ID, id_next = NO_ID;
   Id obj_loc = NO_ID, pla_loc = NO_ID;
   Id id_aux = NO_ID;
   int die = 0;
@@ -79,9 +79,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
   char dir;
   Space* space_act = NULL;
   Space* space_next = NULL;
-  Space* space_back = NULL;
   char str[STRING], ob1[STRING], ob2[STRING], ob3[STRING], ob4[STRING];
   T_Command last_cmd = UNKNOWN;
+  Id linkaux;
 
   extern char *cmd_to_str[];
 
@@ -90,74 +90,9 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
   screen_area_clear(ge->map);
   if ((id_act = game_get_player_location(game)) != NO_ID){
     space_act = game_get_space(game, id_act);
-    id_back = space_get_north(space_act);
-    id_next = space_get_south(space_act);
-    space_back = game_get_space(game, id_back);
+    linkaux = space_get_south(space_act);
+    id_next = link_get_space2_id(game_get_link(game, linkaux));
     space_next = game_get_space(game, id_next);
-
-
-
-    if((id_aux = game_get_object_id(game,0)) != NO_ID){
-            if(game_get_object_location(game,id_aux) == id_back)
-              sprintf(ob1, "FR ");
-            else
-              sprintf(ob1, "   ");
-          }
-          if((id_aux = game_get_object_id(game,1)) != NO_ID){
-            if(game_get_object_location(game,id_aux) == id_back)
-              sprintf(ob2, "FA ");
-            else
-              sprintf(ob2, "   ");
-          }
-          if((id_aux=game_get_object_id(game,2))!=NO_ID){
-            if(game_get_object_location(game,id_aux)==id_back)
-              sprintf(ob3, "FV ");
-            else
-              sprintf(ob3, "   ");
-          }
-          if((id_aux=game_get_object_id(game,3))!=NO_ID){
-            if(game_get_object_location(game,id_aux)==id_back)
-              sprintf(ob4, "FM");
-            else
-              sprintf(ob4, "  ");
-          }
-
-
-        if(game_get_player_location(game)==5 && game_get_player_location(game)==id_back)
-          dir='>';
-        else if(game_get_player_location(game)==8 && game_get_player_location(game)==id_back)
-          dir='>';
-        else if(game_get_player_location(game)==9 && game_get_player_location(game)==id_back)
-          dir='>';
-        else if(game_get_player_location(game)==13 && game_get_player_location(game)==id_back)
-          dir='>';
-        else if(game_get_player_location(game)==17 && game_get_player_location(game)==id_back)
-          dir='>';
-        else if(game_get_player_location(game)==21 && game_get_player_location(game)==id_back)
-          dir='>';
-        else if(game_get_player_location(game)==16 && game_get_player_location(game)==id_back)
-          dir='<';
-        else if(game_get_player_location(game)==22 && game_get_player_location(game)==id_back)
-          dir='<';
-        else
-          dir=' ';
-
-        if (id_back != NO_ID) {
-          sprintf(str, "  |         %2d|%c",(int) id_back,dir);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |   %s |",space_get_gdesc_illustration(space_back,0));
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |   %s |",space_get_gdesc_illustration(space_back,1));
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |   %s |",space_get_gdesc_illustration(space_back,2));
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  |%s%s%s%s|",ob1,ob2,ob3,ob4);
-          screen_area_puts(ge->map, str);
-          sprintf(str, "  +-----------+");
-          screen_area_puts(ge->map, str);
-          sprintf(str, "        ^");
-          screen_area_puts(ge->map, str);
-        }
 
         if((id_aux = game_get_object_id(game,0)) != NO_ID){
             if(game_get_object_location(game,id_aux) == id_act)
@@ -301,14 +236,22 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
 
 
   if ((pla_loc = game_get_player_location(game)) != NO_ID){
-    sprintf(str, "  Player location:%d", (int)pla_loc);
+    sprintf(str, " Player location:%d", (int)pla_loc);
     screen_area_puts(ge->descript, str);
   }
 
   if ((die = game_get_die(game)) != -1){
-    sprintf(str, "  Die value:%d", (int)die);
+    sprintf(str, " Die value:%d", (int)die);
     screen_area_puts(ge->descript, str);
   }
+
+
+  if(game_get_description(game) != NULL && game_get_last_command(game) == INSPECT){
+        printf("ERR1: %s", game_get_description(game));
+        sprintf(str, " Description: %s", game_get_description(game));
+        screen_area_puts(ge->descript, str);
+
+    }
 
   /* Paint the in the banner area */
   screen_area_puts(ge->banner, " The game of the Goose ");
