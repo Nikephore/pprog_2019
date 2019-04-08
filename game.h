@@ -82,7 +82,6 @@ void   game_print_screen(Game* game);
 *@param1 game. Juego del que se imprimira la informacion
 *@return
 */
-
 void   game_print_data(Game* game);
 
 /**
@@ -93,6 +92,12 @@ void   game_print_data(Game* game);
 */
 Space* game_get_space(Game* game, Id id);
 
+/**
+*@brief se obtiene el link al cual pertenece una id
+*@param1 game. El juego al que pertenece el espacio
+*@param2 id. La id del link a buscar
+*@return se devuelve la direccion del link que coincide con la id, o NULL si ninguno coincide
+*/
 Link* game_get_link(Game* game, Id id);
 
 /**
@@ -153,14 +158,20 @@ char * game_get_object_name(Game* game, Id id);
 char* game_get_description(Game* game);
 
 char* game_get_object_description(Game* game, Id id);
+
 /**
 *@brief obtiene el ultimo comando introducido
 *@param1 game. El juego en el que buscamos el ultimo comando
 *@return devuelve el ultimo comando introducido
 */
-
 T_Command game_get_last_command(Game* game);
 
+/**
+*@brief obtiene el ultimo imput introducido
+*@param1 game. El juego en el que buscamos el ultimo imput
+*@return devuelve el ultimo imput introducido
+*/
+char* game_get_command_imput(Game* game);
 /**
 *@brief añade un espacio al juego
 *@param1 game. El juego al que añadimos el espacio

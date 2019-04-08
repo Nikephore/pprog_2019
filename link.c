@@ -20,7 +20,6 @@
 */
 struct _Link{
   Id id;
-  char name[WORD_SIZE + 1];
   Id ids_spaces[NUM_IDS];
   BOOL state;
 };
@@ -50,7 +49,6 @@ Link* link_create(Id id, Id id_space1, Id id_space2){
   }
 
   newLink->id = id;
-  newLink->name[0] = '\0';
   newLink->ids_spaces[0] = id_space1;
   newLink->ids_spaces[1] = id_space2;
   newLink->state = FALSE;
@@ -70,7 +68,6 @@ STATUS link_destroy(Link* link){
     return ERROR;
   }
   free(link);
-  link = NULL;
   return OK;
 }
 
@@ -102,39 +99,6 @@ Id link_get_id(Link* link){
     return NO_ID;
   }
   return link->id;
-}
-
-/*
-*
-* @brief: cambia el nombre del link
-* @params1: introduce la direccion de un link
-* @params2: una cadena de caracteres con un nombre a guardar
-* @return: devuelve ERROR si no se ha cambiado el nombre, u OK si lo ha hecho correctamente
-*
-*/
-STATUS link_set_name(Link* link, const char* name){
-  if(!link || name == NULL){
-    return ERROR;
-  }
-  if (!strcpy(link->name, name)) {
-    return ERROR;
-  }
-
-  return OK;
-}
-
-/*
-*
-* @brief: accede al link y devuelve su nombre
-* @params: recibe como parámetro de entrada un link
-* @return: devuelve la cadena de caracteres del nombre del link
-*
-*/
-const char* link_get_name(Link* link){
-  if(!link){
-    return NULL;
-  }
-  return link->name;
 }
 
 /*
@@ -203,7 +167,7 @@ STATUS link_print(Link* link) {
     return ERROR;
   }
 
-  fprintf(stdout, "--> Link (Id: %ld; Name: %s; Espacio 1: %ld; Espacio 2: %ld;)\n", link->id, link->name, link->ids_spaces[0], link->ids_spaces[1]);
+  fprintf(stdout, "--> Link (Id: %ld; Espacio 1: %ld; Espacio 2: %ld;)\n", link->id, link->ids_spaces[0], link->ids_spaces[1]);
 
 
   return OK;

@@ -14,7 +14,7 @@
 #include "game.h"
 #include "game_reader.h"
 
-#define N_CALLBACK 10
+#define N_CALLBACK 11
 
 struct _Game{
   Space* spaces[MAX_SPACES + 1];
@@ -43,6 +43,7 @@ void game_callback_roll(Game* game);
 void game_callback_left(Game* game);
 void game_callback_right(Game* game);
 void game_callback_inspect(Game* game);
+void game_callback_move(Game* game);
 
 static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_unknown,
@@ -54,7 +55,8 @@ static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_roll,
   game_callback_left,
   game_callback_right,
-  game_callback_inspect};
+  game_callback_inspect,
+  game_callback_move};
 
 /**
    Implementación de la interfaz de juego
@@ -148,12 +150,14 @@ STATUS game_destroy(Game* game) {
     object_destroy(game->object[i]);
   }
 
-  for (i = 0; (i < MAX_OBJECTS) && (game->link[i] != NULL); i++) {
+  for (i = 0; (i < MAX_LINKS) && (game->link[i] != NULL); i++) {
     link_destroy(game->link[i]);
   }
 
   die_destroy(game->die);
   player_destroy(game->player);
+
+  free(game);
 
   return OK;
 }
@@ -449,6 +453,20 @@ T_Command game_get_last_command(Game* game){
   return command_get_cmd(game->last_cmd);
 }
 
+/**
+*@brief obtiene el ultimo imput introducido
+*@param1 game. El juego en el que buscamos el ultimo imput
+*@return devuelve el ultimo imput introducido
+*/
+char* game_get_command_imput(Game* game){
+
+  if(game == NULL){
+    return NULL;
+  }
+
+  return command_get_imput(game->last_cmd);
+}
+
 char* game_get_space_description(Game* game){
 
   Id aux_id = NO_ID;
@@ -587,7 +605,7 @@ void game_callback_next(Game* game) {
   for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++) {
     current_id = space_get_id(game->spaces[i]);
     if (current_id == space_id) {
-      linkaux = space_get_south(game->spaces[i]);
+      linkaux = space_get_south_link(game->spaces[i]);
       current_id = link_get_space2_id(game_get_link(game, linkaux));
       if (current_id != NO_ID) {
 	       game_set_player_location(game, current_id);
@@ -616,7 +634,7 @@ void game_callback_back(Game* game) {
   for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++) {
     current_id = space_get_id(game->spaces[i]);
     if (current_id == space_id) {
-      linkaux = space_get_north(game->spaces[i]);
+      linkaux = space_get_north_link(game->spaces[i]);
       current_id = link_get_space1_id(game_get_link(game, linkaux));
       if (current_id != NO_ID) {
 	       game_set_player_location(game, current_id);
@@ -723,7 +741,7 @@ void game_callback_left(Game* game){
   for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++) {
     current_id = space_get_id(game->spaces[i]);
     if (current_id == space_id) {
-      linkaux = space_get_west(game->spaces[i]);
+      linkaux = space_get_west_link(game->spaces[i]);
       current_id = link_get_space1_id(game_get_link(game, linkaux));
       if (current_id != NO_ID) {
         game_set_player_location(game, current_id);
@@ -751,7 +769,7 @@ void game_callback_right(Game* game){
   for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++) {
     current_id = space_get_id(game->spaces[i]);
     if (current_id == space_id) {
-      linkaux = space_get_east(game->spaces[i]);
+      linkaux = space_get_east_link(game->spaces[i]);
       current_id = link_get_space2_id(game_get_link(game, linkaux));
       if (current_id != NO_ID) {
         game_set_player_location(game, current_id);
@@ -797,4 +815,40 @@ void game_callback_inspect(Game* game){
     }
   }
   return;
+}
+
+void game_callback_move(Game *game){
+  Link *link;
+  Id link_id = NO_ID;
+  Id next_space_id = NO_ID;
+
+  if (!game)
+      return;
+
+  if (strcmp(command_get_imput(game->last_cmd), "north") == 0 || strcmp(command_get_imput(game->last_cmd), "n") == 0)
+    link_id = space_get_north_link(game_get_space(game, game_get_player_location(game)));
+
+  else if (strcmp(command_get_imput(game->last_cmd), "east") == 0 || strcmp(command_get_imput(game->last_cmd), "e") == 0)
+    link_id = space_get_east_link(game_get_space(game, game_get_player_location(game)));
+
+  else if (strcmp(command_get_imput(game->last_cmd), "south") == 0 || strcmp(command_get_imput(game->last_cmd), "s") == 0)
+    link_id = space_get_south_link(game_get_space(game, game_get_player_location(game)));
+
+  else if (strcmp(command_get_imput(game->last_cmd), "west") == 0 || strcmp(command_get_imput(game->last_cmd), "w") == 0)
+    link_id = space_get_west_link(game_get_space(game, game_get_player_location(game)));
+
+  else if (strcmp(command_get_imput(game->last_cmd), "test") == 0 || strcmp(command_get_imput(game->last_cmd), "t") == 0){
+    game_set_player_location(game, 6);
+    return;
+  }
+
+  else
+    return;
+
+  link = game_get_link(game, link_id);
+
+  next_space_id = link_get_space2_id(link);
+
+  game_set_player_location(game, next_space_id);
+
 }

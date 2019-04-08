@@ -15,7 +15,7 @@
 #include "command.h"
 
 #define CMD_LENGHT 30
-#define N_CMD 11
+#define N_CMD 12
 /**
 * @brief La estructura de un comando
 *
@@ -27,8 +27,8 @@ struct _Command{
 };
 
 char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Next", "Back",
-                            "Take", "Drop", "Roll", "Left", "Right", "Inspect"};
-char *short_cmd_to_str[N_CMD] = {"","","e","n","b","t","d","rl","l","r","i"};
+                            "Take", "Drop", "Roll", "Left", "Right", "Inspect", "Move"};
+char *short_cmd_to_str[N_CMD] = {"","","e","n","b","t","d","rl","l","r","i","m"};
 /*
 *
 * @brief: reserva memoria dinámica suficiente crear un nuevo comando
@@ -143,6 +143,9 @@ STATUS command_get_user_input(Command *command){
           strcpy(command->imp, input1);
         }
         else if(aux > 1 && command->cmd == INSPECT){
+          strcpy(command->imp, input1);
+        }
+        else if(aux > 1 && command->cmd == MOVE){
           strcpy(command->imp, input1);
         }
       }

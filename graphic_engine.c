@@ -79,7 +79,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
   char dir;
   Space* space_act = NULL;
   Space* space_next = NULL;
-  char str[STRING], ob1[STRING], ob2[STRING], ob3[STRING], ob4[STRING];
+  char str[STRING*5], ob1[STRING], ob2[STRING], ob3[STRING], ob4[STRING];
   T_Command last_cmd = UNKNOWN;
   Id linkaux;
 
@@ -90,7 +90,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
   screen_area_clear(ge->map);
   if ((id_act = game_get_player_location(game)) != NO_ID){
     space_act = game_get_space(game, id_act);
-    linkaux = space_get_south(space_act);
+    linkaux = space_get_south_link(space_act);
     id_next = link_get_space2_id(game_get_link(game, linkaux));
     space_next = game_get_space(game, id_next);
 
@@ -201,11 +201,11 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
 
 
         if (id_next != NO_ID) {
-          sprintf(str, "        v");
+          sprintf(str, "        v %d",(int)linkaux);
           screen_area_puts(ge->map, str);
           sprintf(str, "  +-----------+");
           screen_area_puts(ge->map, str);
-          sprintf(str, "  |         %2d|%c",(int) id_next, dir);
+          sprintf(str, "  |          %d|-->%c",(int) id_next, dir);
           screen_area_puts(ge->map, str);
           sprintf(str, "  |   %s |",space_get_gdesc_illustration(space_next,0));
           screen_area_puts(ge->map, str);
@@ -260,12 +260,12 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
   screen_area_clear(ge->help);
   sprintf(str, " The commands you can use are:");
   screen_area_puts(ge->help, str);
-  sprintf(str, "     next(n), back(b), exit(e), take(t), drop(d), roll(rl), right(r), left(l), inspect(i)");
+  sprintf(str, "     next(n), back(b), exit(e), take(t), drop(d), roll(rl), right(r), left(l), inspect(i), move(m)");
   screen_area_puts(ge->help, str);
 
   /* Paint the in the feedback area */
   last_cmd = game_get_last_command(game);
-  sprintf(str, " %s", cmd_to_str[last_cmd-NO_CMD]);
+  sprintf(str, " %s %s", cmd_to_str[last_cmd-NO_CMD], game_get_command_imput(game));
   screen_area_puts(ge->feedback, str);
 
   /* Dump to the terminal */

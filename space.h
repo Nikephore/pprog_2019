@@ -69,14 +69,14 @@ const char* space_get_name(Space* space);
 *@param2  id. Id del norte
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
-STATUS space_set_north(Space* space, Id id);
+STATUS space_set_north_link(Space* space, Id id);
 
 /**
 *@brief obtiene el enlace al norte del espacio introducido
 *@param1 space. Espacio del cual queremos saber el norte
 *@return devuelve la id del norte del espacio o NO_ID si ha ocurrido algun error
 */
-Id space_get_north(Space* space);
+Id space_get_north_link(Space* space);
 
 /**
 *@brief establece el enlace al sur de un espacio
@@ -84,14 +84,14 @@ Id space_get_north(Space* space);
 *@param2  id. Id del sur
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
-STATUS space_set_south(Space* space, Id id);
+STATUS space_set_south_link(Space* space, Id id);
 
 /**
 *@brief obtiene el enlace al sur del espacio introducido
 *@param1 space. Espacio del cual queremos saber el sur
 *@return devuelve la id del sur del espacio o NO_ID si ha ocurrido algun error
 */
-Id space_get_south(Space* space);
+Id space_get_south_link(Space* space);
 
 /**
 *@brief establece el enlace al este de un espacio
@@ -99,14 +99,14 @@ Id space_get_south(Space* space);
 *@param2  id. Id del este
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
-STATUS space_set_east(Space* space, Id id);
+STATUS space_set_east_link(Space* space, Id id);
 
 /**
 *@brief obtiene el enlace al este del espacio introducido
 *@param1 space. Espacio del cual queremos saber el este
 *@return devuelve la id del este del espacio o NO_ID si ha ocurrido algun error
 */
-Id space_get_east(Space* space);
+Id space_get_east_link(Space* space);
 
 /**
 *@brief establece el enlace al oeste de un espacio
@@ -114,14 +114,14 @@ Id space_get_east(Space* space);
 *@param2  id. Id del oeste
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
-STATUS space_set_west(Space* space, Id id);
+STATUS space_set_west_link(Space* space, Id id);
 
 /**
 *@brief obtiene el enlace al oeste del espacio introducido
 *@param1 space. Espacio del cual queremos saber el oeste
 *@return devuelve la id del este del espacio o NO_ID si ha ocurrido algun error
 */
-Id space_get_west(Space* space);
+Id space_get_west_link(Space* space);
 
 /**
 *@brief establece la descripción de un espacio
@@ -171,14 +171,6 @@ STATUS space_delete_object(Space *space, Id id);
 
 int space_get_num_object(Space* space);
 
-/**
-*@brief establecemos la id del link
-*@param1 space. Espacio del cual queremos establecer la id
-*@param2 id. Id del link que se quiere establecer en el espacio
-*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
-*/
-
-STATUS space_add_link(Space *space, Id id);
 
 /**
 *@brief genera la descripcion grafica de nuestros objetos
