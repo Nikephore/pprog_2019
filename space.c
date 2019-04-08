@@ -29,7 +29,6 @@ struct _Space {
   Id link_east;
   Id link_west;
   Set *set;
-  Link *link;
 };
 /**
 *@brief creamos el espacio
@@ -58,7 +57,6 @@ Space* space_create(Id id) {
   newSpace->link_west = NO_ID;
 
   newSpace->set = set_create();
-  newSpace->link = link_create();
 
   return newSpace;
 }
@@ -75,7 +73,6 @@ STATUS space_destroy(Space* space) {
   if(space->set != NULL){
     set_destroy(space->set);
   }
-
 
   free(space);
   space = NULL;
@@ -105,7 +102,7 @@ STATUS space_set_name(Space* space, char* name) {
 *@param2  id. Id del norte
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
-STATUS space_set_north(Space* space, Id id) {
+STATUS space_set_north_link(Space* space, Id id) {
   if (!space || id == NO_ID) {
     return ERROR;
   }
@@ -118,7 +115,7 @@ STATUS space_set_north(Space* space, Id id) {
 *@param2  id. Id del sur
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
-STATUS space_set_south(Space* space, Id id) {
+STATUS space_set_south_link(Space* space, Id id) {
   if (!space || id == NO_ID) {
     return ERROR;
   }
@@ -131,7 +128,7 @@ STATUS space_set_south(Space* space, Id id) {
 *@param2  id. Id del este
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
-STATUS space_set_east(Space* space, Id id) {
+STATUS space_set_east_link(Space* space, Id id) {
   if (!space || id == NO_ID) {
     return ERROR;
   }
@@ -144,7 +141,7 @@ STATUS space_set_east(Space* space, Id id) {
 *@param2  id. Id del oeste
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
-STATUS space_set_west(Space* space, Id id) {
+STATUS space_set_west_link(Space* space, Id id) {
   if (!space || id == NO_ID) {
     return ERROR;
   }
@@ -196,7 +193,7 @@ Id space_get_id(Space* space) {
 *@param1 space. Espacio del cual queremos saber el norte
 *@return devuelve la id del norte del espacio o NO_ID si ha ocurrido algun error
 */
-Id space_get_north(Space* space) {
+Id space_get_north_link(Space* space) {
   if (!space) {
     return NO_ID;
   }
@@ -207,7 +204,7 @@ Id space_get_north(Space* space) {
 *@param1 space. Espacio del cual queremos saber el sur
 *@return devuelve la id del sur del espacio o NO_ID si ha ocurrido algun error
 */
-Id space_get_south(Space* space) {
+Id space_get_south_link(Space* space) {
   if (!space) {
     return NO_ID;
   }
@@ -218,7 +215,7 @@ Id space_get_south(Space* space) {
 *@param1 space. Espacio del cual queremos saber el este
 *@return devuelve la id del este del espacio o NO_ID si ha ocurrido algun error
 */
-Id space_get_east(Space* space) {
+Id space_get_east_link(Space* space) {
   if (!space) {
     return NO_ID;
   }
@@ -229,7 +226,7 @@ Id space_get_east(Space* space) {
 *@param1 space. Espacio del cual queremos saber el oeste
 *@return devuelve la id del este del espacio o NO_ID si ha ocurrido algun error
 */
-Id space_get_west(Space* space) {
+Id space_get_west_link(Space* space) {
   if (!space) {
     return NO_ID;
   }
@@ -273,28 +270,28 @@ STATUS space_print(Space* space) {
 
   fprintf(stdout, "--> Space (Id: %ld; Name: %s)\n", space->id, space->name);
 
-  idaux = space_get_north(space);
+  idaux = space_get_north_link(space);
   if (NO_ID != idaux) {
     fprintf(stdout, "---> North link: %ld.\n", idaux);
   } else {
     fprintf(stdout, "---> No north link.\n");
   }
 
-  idaux = space_get_south(space);
+  idaux = space_get_south_link(space);
   if (NO_ID != idaux) {
     fprintf(stdout, "---> South link: %ld.\n", idaux);
   } else {
     fprintf(stdout, "---> No south link.\n");
   }
 
-  idaux = space_get_east(space);
+  idaux = space_get_east_link(space);
   if (NO_ID != idaux) {
     fprintf(stdout, "---> East link: %ld.\n", idaux);
   } else {
     fprintf(stdout, "---> No east link.\n");
   }
 
-  idaux = space_get_west(space);
+  idaux = space_get_west_link(space);
   if (NO_ID != idaux) {
     fprintf(stdout, "---> West link: %ld.\n", idaux);
   } else {
@@ -352,20 +349,6 @@ STATUS space_delete_object(Space *space, Id id){
   return OK;
 }
 
-/**
-*@brief establecemos la id del link
-*@param1 space. Espacio del cual queremos establecer la id
-*@param2 id. Id del link que se quiere establecer en el espacio
-*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
-*/
-STATUS space_add_link(Space *space, Id id){
-
-  if(space == NULL || id == NO_ID ){
-    return ERROR;
-  }
-
-  return OK;
-}
 /**
 *@brief genera la descripcion grafica de nuestros objetos
 *@param1 space. Espacio del cual queremos establecer la id

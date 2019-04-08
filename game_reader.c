@@ -80,10 +80,10 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
       if (space != NULL) {
 	       space_set_name(space, name);
          space_set_description(space, des);
-	       space_set_north(space, north);
-	       space_set_east(space, east);
-	       space_set_south(space, south);
-	       space_set_west(space, west);
+	       space_set_north_link(space, north);
+	       space_set_east_link(space, east);
+	       space_set_south_link(space, south);
+	       space_set_west_link(space, west);
 	       game_add_space(game, space);
 
          for(i=0; i<MAX_STRING; i++){
@@ -177,7 +177,6 @@ STATUS game_reader_load_links (Game* game, char*filename){
   char* toks = NULL;
   Id id = NO_ID;
   Id space1 = NO_ID, space2 = NO_ID;
-  Id position = NO_ID;
   Link* link = NULL;
   STATUS status = OK;
 
@@ -220,22 +219,9 @@ STATUS game_reader_load_links (Game* game, char*filename){
         return ERROR;
       }
 
-    	link_set_name(link, name);
       link_set_id(link, id);
+      link_set_name(link, name);
       game_add_link(game, link);
-      space_add_link(game_get_space(game, position), id);
-
-      if(link_get_space1_id(link) == link_get_space2_id(link)+1){
-        space_set_south(game_get_space(game, link_get_space1_id(link)), link_get_id(link));
-        space_set_north(game_get_space(game, link_get_space2_id(link)), link_get_id(link));
-      }else if(link_get_space1_id(link) > link_get_space2_id(link)){
-        space_set_east(game_get_space(game, link_get_space1_id(link)), link_get_id(link));
-        if(link_get_space1_id(link) == 8 && link_get_space2_id(link) == 16){
-          space_set_west(game_get_space(game, link_get_space1_id(link)), link_get_id(link));
-        }else{
-          space_set_west(game_get_space(game, link_get_space1_id(link)), link_get_id(link));
-        }
-      }
 
     }
   }

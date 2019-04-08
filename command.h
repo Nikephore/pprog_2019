@@ -30,7 +30,8 @@ typedef enum enum_Command {
   ROLL,
   LEFT,
   RIGHT,
-  INSPECT} T_Command;
+  INSPECT,
+  MOVE} T_Command;
   /*
   *
   * @brief: reserva memoria dinámica suficiente crear un nuevo comando

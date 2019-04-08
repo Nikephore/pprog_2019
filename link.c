@@ -70,7 +70,6 @@ STATUS link_destroy(Link* link){
     return ERROR;
   }
   free(link);
-  link = NULL;
   return OK;
 }
 
@@ -106,39 +105,6 @@ Id link_get_id(Link* link){
 
 /*
 *
-* @brief: cambia el nombre del link
-* @params1: introduce la direccion de un link
-* @params2: una cadena de caracteres con un nombre a guardar
-* @return: devuelve ERROR si no se ha cambiado el nombre, u OK si lo ha hecho correctamente
-*
-*/
-STATUS link_set_name(Link* link, const char* name){
-  if(!link || name == NULL){
-    return ERROR;
-  }
-  if (!strcpy(link->name, name)) {
-    return ERROR;
-  }
-
-  return OK;
-}
-
-/*
-*
-* @brief: accede al link y devuelve su nombre
-* @params: recibe como parámetro de entrada un link
-* @return: devuelve la cadena de caracteres del nombre del link
-*
-*/
-const char* link_get_name(Link* link){
-  if(!link){
-    return NULL;
-  }
-  return link->name;
-}
-
-/*
-*
 * @brief: accede al link y devuelve un id de un espacio
 * @params: recibe como parámetro de entrada un link
 * @return: devuelve el id del primer espacio
@@ -166,6 +132,40 @@ Id link_get_space2_id(Link* link){
 
   return link->ids_spaces[1];
 }
+
+/*
+*
+* @brief: cambia el nombre del link
+* @params1: introduce la direccion de un link
+* @params2: una cadena de caracteres con un nombre a guardar
+* @return: devuelve ERROR si no se ha cambiado el nombre, u OK si lo ha hecho correctamente
+*
+*/
+STATUS link_set_name(Link* link, const char* name){
+  if(!link || name == NULL){
+    return ERROR;
+  }
+  if (!strcpy(link->name, name)) {
+    return ERROR;
+  }
+
+   return OK;
+}
+
+ /*
+*
+* @brief: accede al link y devuelve su nombre
+* @params: recibe como parámetro de entrada un link
+* @return: devuelve la cadena de caracteres del nombre del link
+*
+*/
+const char* link_get_name(Link* link){
+  if(!link){
+    return NULL;
+  }
+  return link->name;
+}
+
 
 /*
 *
