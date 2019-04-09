@@ -1,0 +1,218 @@
+\hypertarget{player_8h}{}\section{player.\+h File Reference}
+\label{player_8h}\index{player.\+h@{player.\+h}}
+
+
+Se encarga de las funciones y la gestion del jugador de nuestro juego.  
+
+
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}object.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inventory.\+h\char`\"{}}\newline
+Include dependency graph for player.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{player_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__Player}{\+\_\+\+Player} \hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}
+\begin{DoxyCompactList}\small\item\em La estructura de un jugador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$ \hyperlink{player_8h_a2a002f9a122c494520b2d478ce176244}{player\+\_\+create} ()
+\begin{DoxyCompactList}\small\item\em inicializa un jugador \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{player_8h_a4a602c75f8e3391cbd288c35a83a10fe}{player\+\_\+destroy} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p)
+\begin{DoxyCompactList}\small\item\em libera el jugador que se ha pasado como argumento \end{DoxyCompactList}\item 
+Id \hyperlink{player_8h_ace9de3676a44420727bcc1d2935ae3e4}{player\+\_\+get\+\_\+id} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p)
+\begin{DoxyCompactList}\small\item\em obtiene la id de un jugador \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{player_8h_a00fd04dabfe1024ea62fe7c335097db7}\label{player_8h_a00fd04dabfe1024ea62fe7c335097db7}} 
+Id {\bfseries player\+\_\+get\+\_\+location} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p)
+\item 
+int \hyperlink{player_8h_ade7fc468bf2224b8948072c13802b8d4}{player\+\_\+get\+\_\+num\+\_\+objects} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p)
+\begin{DoxyCompactList}\small\item\em obtiene el número de objetos de un jugador \end{DoxyCompactList}\item 
+B\+O\+OL \hyperlink{player_8h_ac44a8e84043c01d94e146d3e286828b5}{player\+\_\+search\+\_\+object} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p, Id id)
+\begin{DoxyCompactList}\small\item\em Busca un objeto entre los que dispone el Jugador. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{player_8h_aaec42336dad00b854be6f071c653d645}{player\+\_\+get\+\_\+name} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p)
+\begin{DoxyCompactList}\small\item\em obtiene el nombre de un jugador \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{player_8h_a1df02c30af1e7fd4ed798b62823d0206}{player\+\_\+set\+\_\+id} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p, Id id)
+\begin{DoxyCompactList}\small\item\em cambia la id de un jugador \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{player_8h_accb30c6a0b9959c2aa5b781e58ac1b32}{player\+\_\+set\+\_\+location} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p, Id loc)
+\begin{DoxyCompactList}\small\item\em cambia la localizacion de un jugador \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{player_8h_a0f513ff564413ab29a09b1fea5cd7488}{player\+\_\+set\+\_\+object} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p, Id obj)
+\begin{DoxyCompactList}\small\item\em cambia el objeto de un jugador \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{player_8h_a129b078feab763ca994a18ed7664cec8}\label{player_8h_a129b078feab763ca994a18ed7664cec8}} 
+S\+T\+A\+T\+US {\bfseries player\+\_\+print} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$p)
+\item 
+\mbox{\Hypertarget{player_8h_a9cece6144d24ce5f53850062fb9ed2a0}\label{player_8h_a9cece6144d24ce5f53850062fb9ed2a0}} 
+S\+T\+A\+T\+US {\bfseries player\+\_\+add\+\_\+element} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player, Id id)
+\item 
+\mbox{\Hypertarget{player_8h_a52fe1679c501ba6779180e37f1754454}\label{player_8h_a52fe1679c501ba6779180e37f1754454}} 
+S\+T\+A\+T\+US {\bfseries player\+\_\+delete\+\_\+element} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player, Id id)
+\item 
+\mbox{\Hypertarget{player_8h_a69993ddb3e45e2215acd384a6b382cbf}\label{player_8h_a69993ddb3e45e2215acd384a6b382cbf}} 
+S\+T\+A\+T\+US {\bfseries player\+\_\+check\+\_\+element} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player, Id id)
+\item 
+\mbox{\Hypertarget{player_8h_a270da6469a85e0c2b7f9f4088d290051}\label{player_8h_a270da6469a85e0c2b7f9f4088d290051}} 
+\hyperlink{struct__Inventory}{Inventory} $\ast$ {\bfseries player\+\_\+get\+\_\+inventory} (\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$player)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Se encarga de las funciones y la gestion del jugador de nuestro juego. 
+
+\begin{DoxyAuthor}{Authors}
+Luis Nucifora 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+03/03/2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{player_8h_af30e2030635a69690f85e48bc6ef202f}\label{player_8h_af30e2030635a69690f85e48bc6ef202f}} 
+\index{player.\+h@{player.\+h}!Player@{Player}}
+\index{Player@{Player}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{Player}{Player}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct__Player}{\+\_\+\+Player} \hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}}
+
+
+
+La estructura de un jugador. 
+
+Almacena las diferentes informaciones de un jugador 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{player_8h_a2a002f9a122c494520b2d478ce176244}\label{player_8h_a2a002f9a122c494520b2d478ce176244}} 
+\index{player.\+h@{player.\+h}!player\+\_\+create@{player\+\_\+create}}
+\index{player\+\_\+create@{player\+\_\+create}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{player\+\_\+create()}{player\_create()}}
+{\footnotesize\ttfamily \hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player}$\ast$ player\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+inicializa un jugador 
+
+\begin{DoxyReturn}{Returns}
+devuelve la direccion del jugador o N\+U\+LL si hubo algun error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_a4a602c75f8e3391cbd288c35a83a10fe}\label{player_8h_a4a602c75f8e3391cbd288c35a83a10fe}} 
+\index{player.\+h@{player.\+h}!player\+\_\+destroy@{player\+\_\+destroy}}
+\index{player\+\_\+destroy@{player\+\_\+destroy}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{player\+\_\+destroy()}{player\_destroy()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US player\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+libera el jugador que se ha pasado como argumento 
+
+p. Jugador a liberar \begin{DoxyReturn}{Returns}
+devuelve OK si se pudo liberar y E\+R\+R\+OR si hubo algun problema 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_ace9de3676a44420727bcc1d2935ae3e4}\label{player_8h_ace9de3676a44420727bcc1d2935ae3e4}} 
+\index{player.\+h@{player.\+h}!player\+\_\+get\+\_\+id@{player\+\_\+get\+\_\+id}}
+\index{player\+\_\+get\+\_\+id@{player\+\_\+get\+\_\+id}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{player\+\_\+get\+\_\+id()}{player\_get\_id()}}
+{\footnotesize\ttfamily Id player\+\_\+get\+\_\+id (\begin{DoxyParamCaption}\item[{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+obtiene la id de un jugador 
+
+p. El jugador del que queremos obtener la id \begin{DoxyReturn}{Returns}
+devuelve la id del jugador o N\+O\+\_\+\+ID si hubo algun error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_aaec42336dad00b854be6f071c653d645}\label{player_8h_aaec42336dad00b854be6f071c653d645}} 
+\index{player.\+h@{player.\+h}!player\+\_\+get\+\_\+name@{player\+\_\+get\+\_\+name}}
+\index{player\+\_\+get\+\_\+name@{player\+\_\+get\+\_\+name}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{player\+\_\+get\+\_\+name()}{player\_get\_name()}}
+{\footnotesize\ttfamily char$\ast$ player\+\_\+get\+\_\+name (\begin{DoxyParamCaption}\item[{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+obtiene el nombre de un jugador 
+
+p. El jugador del que queremos obtener el nombre \begin{DoxyReturn}{Returns}
+devuelve el nombre del jugador. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_ade7fc468bf2224b8948072c13802b8d4}\label{player_8h_ade7fc468bf2224b8948072c13802b8d4}} 
+\index{player.\+h@{player.\+h}!player\+\_\+get\+\_\+num\+\_\+objects@{player\+\_\+get\+\_\+num\+\_\+objects}}
+\index{player\+\_\+get\+\_\+num\+\_\+objects@{player\+\_\+get\+\_\+num\+\_\+objects}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{player\+\_\+get\+\_\+num\+\_\+objects()}{player\_get\_num\_objects()}}
+{\footnotesize\ttfamily int player\+\_\+get\+\_\+num\+\_\+objects (\begin{DoxyParamCaption}\item[{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+obtiene el número de objetos de un jugador 
+
+p. El jugador del que queremos obtener el nombre \begin{DoxyReturn}{Returns}
+devuelve el número de objetos del jugador. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_ac44a8e84043c01d94e146d3e286828b5}\label{player_8h_ac44a8e84043c01d94e146d3e286828b5}} 
+\index{player.\+h@{player.\+h}!player\+\_\+search\+\_\+object@{player\+\_\+search\+\_\+object}}
+\index{player\+\_\+search\+\_\+object@{player\+\_\+search\+\_\+object}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{player\+\_\+search\+\_\+object()}{player\_search\_object()}}
+{\footnotesize\ttfamily B\+O\+OL player\+\_\+search\+\_\+object (\begin{DoxyParamCaption}\item[{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$}]{p,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+Busca un objeto entre los que dispone el Jugador. 
+
+p. El jugador del que queremos buscar entre sus objetos  id. Id del objeto a buscar \begin{DoxyReturn}{Returns}
+true si el objeto esta entre los del jugador, devolvera false en caso contrario 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_a1df02c30af1e7fd4ed798b62823d0206}\label{player_8h_a1df02c30af1e7fd4ed798b62823d0206}} 
+\index{player.\+h@{player.\+h}!player\+\_\+set\+\_\+id@{player\+\_\+set\+\_\+id}}
+\index{player\+\_\+set\+\_\+id@{player\+\_\+set\+\_\+id}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{player\+\_\+set\+\_\+id()}{player\_set\_id()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US player\+\_\+set\+\_\+id (\begin{DoxyParamCaption}\item[{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$}]{p,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+cambia la id de un jugador 
+
+p. El jugador del que queremos cambiar la Id  id. Id para sutituir la id actual del jugador \begin{DoxyReturn}{Returns}
+devuelve OK si se pudo cambiar la id o E\+R\+R\+OR si algo fallo 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_accb30c6a0b9959c2aa5b781e58ac1b32}\label{player_8h_accb30c6a0b9959c2aa5b781e58ac1b32}} 
+\index{player.\+h@{player.\+h}!player\+\_\+set\+\_\+location@{player\+\_\+set\+\_\+location}}
+\index{player\+\_\+set\+\_\+location@{player\+\_\+set\+\_\+location}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{player\+\_\+set\+\_\+location()}{player\_set\_location()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US player\+\_\+set\+\_\+location (\begin{DoxyParamCaption}\item[{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$}]{p,  }\item[{Id}]{location }\end{DoxyParamCaption})}
+
+
+
+cambia la localizacion de un jugador 
+
+p. El jugador del que queremos cambiar la localizacion  loc. localizacion para sutituir la localizacion actual del jugador \begin{DoxyReturn}{Returns}
+devuelve OK si se pudo cambiar la localizacion o E\+R\+R\+OR si algo fallo 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_a0f513ff564413ab29a09b1fea5cd7488}\label{player_8h_a0f513ff564413ab29a09b1fea5cd7488}} 
+\index{player.\+h@{player.\+h}!player\+\_\+set\+\_\+object@{player\+\_\+set\+\_\+object}}
+\index{player\+\_\+set\+\_\+object@{player\+\_\+set\+\_\+object}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{player\+\_\+set\+\_\+object()}{player\_set\_object()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US player\+\_\+set\+\_\+object (\begin{DoxyParamCaption}\item[{\hyperlink{player_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$}]{p,  }\item[{Id}]{obj }\end{DoxyParamCaption})}
+
+
+
+cambia el objeto de un jugador 
+
+p. Jugador del que queremos cambiar el objeto  obj. Objeto para sutituir el objeto actual del jugador \begin{DoxyReturn}{Returns}
+devuelve OK si se pudo cambiar el nombre o E\+R\+R\+OR si algo fallo 
+\end{DoxyReturn}

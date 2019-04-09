@@ -1,0 +1,103 @@
+\hypertarget{set_8h}{}\section{set.\+h File Reference}
+\label{set_8h}\index{set.\+h@{set.\+h}}
+
+
+Se encarga de las funciones y la gestion de un conjunto de objetos llamado set.  
+
+
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for set.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=129pt]{set_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{set_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{set_8h_af2fc6726f0549235b73e6481264fb036}\label{set_8h_af2fc6726f0549235b73e6481264fb036}} 
+\#define {\bfseries M\+A\+X\+\_\+\+N\+U\+M\+\_\+\+ID}~15
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__Set}{\+\_\+\+Set} \hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}
+\begin{DoxyCompactList}\small\item\em La estructura de un conjunto de objetos o set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{set_8h_abcc73b7ad3913fc92dd95d366c9c8687}\label{set_8h_abcc73b7ad3913fc92dd95d366c9c8687}} 
+\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$ {\bfseries set\+\_\+create} ()
+\item 
+\mbox{\Hypertarget{set_8h_a9d762a027f1c3bcdd22f70ee9093a7dd}\label{set_8h_a9d762a027f1c3bcdd22f70ee9093a7dd}} 
+void {\bfseries set\+\_\+destroy} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
+\item 
+\mbox{\Hypertarget{set_8h_aa391688e77e893239e401f20dcd4d89b}\label{set_8h_aa391688e77e893239e401f20dcd4d89b}} 
+S\+T\+A\+T\+US {\bfseries set\+\_\+add\+\_\+object} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set, Id id)
+\item 
+\mbox{\Hypertarget{set_8h_aa3addf3450f1a9eb5afed63552933ce8}\label{set_8h_aa3addf3450f1a9eb5afed63552933ce8}} 
+S\+T\+A\+T\+US {\bfseries set\+\_\+del\+\_\+object} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set, Id id)
+\item 
+\mbox{\Hypertarget{set_8h_a91a2ae635054a674a23eedc35982235a}\label{set_8h_a91a2ae635054a674a23eedc35982235a}} 
+B\+O\+OL {\bfseries set\+\_\+compare} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set, Id id)
+\item 
+\mbox{\Hypertarget{set_8h_a15cdb70810afab6be41df85b825506f1}\label{set_8h_a15cdb70810afab6be41df85b825506f1}} 
+B\+O\+OL {\bfseries set\+\_\+full} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
+\item 
+\mbox{\Hypertarget{set_8h_a679c6b63c60de6a3c8e1d5c19256888a}\label{set_8h_a679c6b63c60de6a3c8e1d5c19256888a}} 
+B\+O\+OL {\bfseries set\+\_\+empty} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
+\item 
+\mbox{\Hypertarget{set_8h_a6d965a888b3e244aa532f7a9f7ed3ded}\label{set_8h_a6d965a888b3e244aa532f7a9f7ed3ded}} 
+Id $\ast$ {\bfseries set\+\_\+get\+\_\+all} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
+\item 
+\mbox{\Hypertarget{set_8h_ad882445dee89c289e8bcd971a56c2e55}\label{set_8h_ad882445dee89c289e8bcd971a56c2e55}} 
+Id {\bfseries set\+\_\+get\+\_\+id} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set, int num)
+\item 
+\mbox{\Hypertarget{set_8h_aa56784fd52d150ede301ab396c00369e}\label{set_8h_aa56784fd52d150ede301ab396c00369e}} 
+int {\bfseries set\+\_\+get\+\_\+num\+\_\+id} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
+\item 
+\mbox{\Hypertarget{set_8h_ae5911e27d99bbcec15f23ef31184bc92}\label{set_8h_ae5911e27d99bbcec15f23ef31184bc92}} 
+int {\bfseries set\+\_\+search\+\_\+object} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set, Id id)
+\item 
+\mbox{\Hypertarget{set_8h_ad5ca92546c83b1b0b9c26b137ad400ce}\label{set_8h_ad5ca92546c83b1b0b9c26b137ad400ce}} 
+void {\bfseries set\+\_\+print} (\hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set} $\ast$set)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Se encarga de las funciones y la gestion de un conjunto de objetos llamado set. 
+
+\begin{DoxyAuthor}{Authors}
+Luis Nucifora 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10/03/2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}\label{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}} 
+\index{set.\+h@{set.\+h}!Set@{Set}}
+\index{Set@{Set}!set.\+h@{set.\+h}}
+\subsubsection{\texorpdfstring{Set}{Set}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct__Set}{\+\_\+\+Set} \hyperlink{set_8h_a6d3b7f7c92cbb4577ef3ef7ddbf93161}{Set}}
+
+
+
+La estructura de un conjunto de objetos o set. 
+
+Almacena las diferentes informaciones de un conjunto de objetos o set 

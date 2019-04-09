@@ -1,0 +1,100 @@
+\hypertarget{object_8h}{}\section{object.\+h File Reference}
+\label{object_8h}\index{object.\+h@{object.\+h}}
+
+
+Se encarga de las funciones y la gestion del objeto de nuestro juego.  
+
+
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+Include dependency graph for object.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=131pt]{object_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{object_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{object_8h_acdc7844fbd4d45737d4aa56834d37829}\label{object_8h_acdc7844fbd4d45737d4aa56834d37829}} 
+\#define {\bfseries M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+TS}~20
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__Object}{\+\_\+\+Object} \hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}
+\begin{DoxyCompactList}\small\item\em La estructura de un objeto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{object_8h_abb0cd30fca5fbddf137c6c04df66bbc7}\label{object_8h_abb0cd30fca5fbddf137c6c04df66bbc7}} 
+\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$ {\bfseries object\+\_\+create} (Id id)
+\item 
+\mbox{\Hypertarget{object_8h_ac9c3ace11b0440f373c67ccd3801398e}\label{object_8h_ac9c3ace11b0440f373c67ccd3801398e}} 
+Id {\bfseries object\+\_\+get\+\_\+id} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\mbox{\Hypertarget{object_8h_ac6f2a9d9a4ed22600839724e8306f750}\label{object_8h_ac6f2a9d9a4ed22600839724e8306f750}} 
+char $\ast$ {\bfseries object\+\_\+get\+\_\+name} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\mbox{\Hypertarget{object_8h_a009bc548c744e309fcc515083cd1a5ec}\label{object_8h_a009bc548c744e309fcc515083cd1a5ec}} 
+Id {\bfseries object\+\_\+get\+\_\+location} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\mbox{\Hypertarget{object_8h_a42dcce5b32474b5d2500329b97913c15}\label{object_8h_a42dcce5b32474b5d2500329b97913c15}} 
+char $\ast$ {\bfseries object\+\_\+get\+\_\+description} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\mbox{\Hypertarget{object_8h_afcf71b4444a014a542f82c78bc9ee112}\label{object_8h_afcf71b4444a014a542f82c78bc9ee112}} 
+S\+T\+A\+T\+US {\bfseries object\+\_\+set\+\_\+id} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, Id id)
+\item 
+\mbox{\Hypertarget{object_8h_a1f468a3ddebae0cf31431705a824371a}\label{object_8h_a1f468a3ddebae0cf31431705a824371a}} 
+S\+T\+A\+T\+US {\bfseries object\+\_\+set\+\_\+name} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$name)
+\item 
+\mbox{\Hypertarget{object_8h_aa33a5ccaae135ff4736869b8e0c82521}\label{object_8h_aa33a5ccaae135ff4736869b8e0c82521}} 
+S\+T\+A\+T\+US {\bfseries object\+\_\+set\+\_\+location} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, Id location)
+\item 
+\mbox{\Hypertarget{object_8h_a28f4fc583f12c241619faa4456ef453d}\label{object_8h_a28f4fc583f12c241619faa4456ef453d}} 
+S\+T\+A\+T\+US {\bfseries object\+\_\+set\+\_\+description} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj, char $\ast$description)
+\item 
+\mbox{\Hypertarget{object_8h_a0edafcae75d50fec4ef4d1d430cc2287}\label{object_8h_a0edafcae75d50fec4ef4d1d430cc2287}} 
+S\+T\+A\+T\+US {\bfseries object\+\_\+print} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\item 
+\mbox{\Hypertarget{object_8h_a355e2f55e8467c2cfb2ef6bd5abbabfb}\label{object_8h_a355e2f55e8467c2cfb2ef6bd5abbabfb}} 
+void {\bfseries object\+\_\+destroy} (\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$obj)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Se encarga de las funciones y la gestion del objeto de nuestro juego. 
+
+\begin{DoxyAuthor}{Authors}
+Álvaro Platón 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+05/03/2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}\label{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}} 
+\index{object.\+h@{object.\+h}!Object@{Object}}
+\index{Object@{Object}!object.\+h@{object.\+h}}
+\subsubsection{\texorpdfstring{Object}{Object}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct__Object}{\+\_\+\+Object} \hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}}
+
+
+
+La estructura de un objeto. 
+
+Almacena las diferentes informaciones de un objeto 

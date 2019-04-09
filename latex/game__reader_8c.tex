@@ -1,0 +1,86 @@
+\hypertarget{game__reader_8c}{}\section{game\+\_\+reader.\+c File Reference}
+\label{game__reader_8c}\index{game\+\_\+reader.\+c@{game\+\_\+reader.\+c}}
+
+
+Carga los espacios de nuestro juego.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}game\+\_\+reader.\+h\char`\"{}}\newline
+Include dependency graph for game\+\_\+reader.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__reader_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+S\+T\+A\+T\+US \hyperlink{game__reader_8c_a1e0e4f4ede7bb399d6f33f66b7c38392}{game\+\_\+reader\+\_\+load\+\_\+spaces} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em carga los espacios necesarios para el juego \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game__reader_8c_a07d0cc9ec5cae35a9ad5dd7882357234}{game\+\_\+reader\+\_\+load\+\_\+objects} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em carga los objetos necesarios para el juego \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game__reader_8c_aa47ab8dc1e29821281766ab359e8ac8b}{game\+\_\+reader\+\_\+load\+\_\+links} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em carga los enlaces necesarios para el juego \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Carga los espacios de nuestro juego. 
+
+\begin{DoxyAuthor}{Author}
+Luis Nucifora 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+07-\/03-\/2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{game__reader_8c_aa47ab8dc1e29821281766ab359e8ac8b}\label{game__reader_8c_aa47ab8dc1e29821281766ab359e8ac8b}} 
+\index{game\+\_\+reader.\+c@{game\+\_\+reader.\+c}!game\+\_\+reader\+\_\+load\+\_\+links@{game\+\_\+reader\+\_\+load\+\_\+links}}
+\index{game\+\_\+reader\+\_\+load\+\_\+links@{game\+\_\+reader\+\_\+load\+\_\+links}!game\+\_\+reader.\+c@{game\+\_\+reader.\+c}}
+\subsubsection{\texorpdfstring{game\+\_\+reader\+\_\+load\+\_\+links()}{game\_reader\_load\_links()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+reader\+\_\+load\+\_\+links (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+carga los enlaces necesarios para el juego 
+
+game. Juego en el que queremos cargar los espacios necesarios  filename. Contiene el nombre del archivo en el que se encuentran los datos de carga de enlaces \begin{DoxyReturn}{Returns}
+devuelve OK si se ejecuto sin problemas y si ha habido algún problema devolvera E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game__reader_8c_a07d0cc9ec5cae35a9ad5dd7882357234}\label{game__reader_8c_a07d0cc9ec5cae35a9ad5dd7882357234}} 
+\index{game\+\_\+reader.\+c@{game\+\_\+reader.\+c}!game\+\_\+reader\+\_\+load\+\_\+objects@{game\+\_\+reader\+\_\+load\+\_\+objects}}
+\index{game\+\_\+reader\+\_\+load\+\_\+objects@{game\+\_\+reader\+\_\+load\+\_\+objects}!game\+\_\+reader.\+c@{game\+\_\+reader.\+c}}
+\subsubsection{\texorpdfstring{game\+\_\+reader\+\_\+load\+\_\+objects()}{game\_reader\_load\_objects()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+reader\+\_\+load\+\_\+objects (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+carga los objetos necesarios para el juego 
+
+game. Juego en el que queremos cargar los espacios necesarios  filename. Contiene el nombre del archivo en el que se encuentran los datos de carga de espacios \begin{DoxyReturn}{Returns}
+devuelve OK si se ejecuto sin problemas y si ha habido algún problema devolvera E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game__reader_8c_a1e0e4f4ede7bb399d6f33f66b7c38392}\label{game__reader_8c_a1e0e4f4ede7bb399d6f33f66b7c38392}} 
+\index{game\+\_\+reader.\+c@{game\+\_\+reader.\+c}!game\+\_\+reader\+\_\+load\+\_\+spaces@{game\+\_\+reader\+\_\+load\+\_\+spaces}}
+\index{game\+\_\+reader\+\_\+load\+\_\+spaces@{game\+\_\+reader\+\_\+load\+\_\+spaces}!game\+\_\+reader.\+c@{game\+\_\+reader.\+c}}
+\subsubsection{\texorpdfstring{game\+\_\+reader\+\_\+load\+\_\+spaces()}{game\_reader\_load\_spaces()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+reader\+\_\+load\+\_\+spaces (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+carga los espacios necesarios para el juego 
+
+game. Juego en el que queremos cargar los espacios necesarios  filename. Contiene el nombre del archivo en el que se encuentran los datos de carga de espacios \begin{DoxyReturn}{Returns}
+devuelve OK si se ejecuto sin problemas y si ha habido algún problema devolvera E\+R\+R\+OR 
+\end{DoxyReturn}

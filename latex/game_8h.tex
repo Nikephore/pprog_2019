@@ -1,0 +1,519 @@
+\hypertarget{game_8h}{}\section{game.\+h File Reference}
+\label{game_8h}\index{game.\+h@{game.\+h}}
+
+
+Implementa la interfaz del juego y todos los callbacks para los diversos comandos.  
+
+
+{\ttfamily \#include \char`\"{}command.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}space.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}object.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}player.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}die.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}set.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}link.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inventory.\+h\char`\"{}}\newline
+Include dependency graph for game.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__Game}{\+\_\+\+Game} \hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}
+\begin{DoxyCompactList}\small\item\em La estructura de nuestro juego. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$ \hyperlink{game_8h_a1cdbe3f06b9bf49eb5e334a22ad3b2b9}{game\+\_\+create} ()
+\begin{DoxyCompactList}\small\item\em se crea nuestro juego. \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game_8h_afc77f90739be0fd45b7f5616e543bfae}{game\+\_\+create\+\_\+from\+\_\+file} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em creamos nuestro juego a partir de un archivo \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game_8h_a045f6326f72665b02e730d718120a0d3}{game\+\_\+update} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command} $\ast$cmd)
+\begin{DoxyCompactList}\small\item\em actualiza nuestro juego cuando se introduce un comando \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game_8h_a0736924a1235c0e6fe9b6d91c2a12af8}{game\+\_\+destroy} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em libera la memoria reservada para nuestro juego \end{DoxyCompactList}\item 
+B\+O\+OL \hyperlink{game_8h_aa6efe0650af110bbd84e742cc8046d93}{game\+\_\+is\+\_\+over} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em comprueba si nuestro juego ha acabado \end{DoxyCompactList}\item 
+void \hyperlink{game_8h_a108f413649a6dc99d3ffeed092dc15f5}{game\+\_\+print\+\_\+screen} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em imprime por pantalla nuestro juego \end{DoxyCompactList}\item 
+void \hyperlink{game_8h_a33a5ed8937423f8c012df3cedad4fa4c}{game\+\_\+print\+\_\+data} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em imprime la informacion de nuestro juego \end{DoxyCompactList}\item 
+\hyperlink{struct__Space}{Space} $\ast$ \hyperlink{game_8h_a69d94da9d27b542d3ebdeb8b60f1f2dc}{game\+\_\+get\+\_\+space} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em se obtiene el espacio al cual pertenece una id \end{DoxyCompactList}\item 
+\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$ \hyperlink{game_8h_a1064ec927b8c33cf55982b73845db7d3}{game\+\_\+get\+\_\+link} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em se obtiene el link al cual pertenece una id \end{DoxyCompactList}\item 
+\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$ \hyperlink{game_8h_a9dca92a603769c72a708a7d042e76dfa}{game\+\_\+get\+\_\+object} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em se obtiene el objeto al cual pertenece una id \end{DoxyCompactList}\item 
+Id \hyperlink{game_8h_a59cdb9346d21f3b4746d2b8e3897e653}{game\+\_\+get\+\_\+object\+\_\+id} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, int i)
+\begin{DoxyCompactList}\small\item\em se obtiene el id del objeto \end{DoxyCompactList}\item 
+int \hyperlink{game_8h_a84ba9051087163657a08de5c0ed55e1c}{game\+\_\+get\+\_\+object\+\_\+num} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em se obtiene el número del objeto \end{DoxyCompactList}\item 
+int \hyperlink{game_8h_a2456a759356a1d887d153074c08964cd}{game\+\_\+get\+\_\+die} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em se obtiene un número entre 1 y 6 simulando la tirada de un dado \end{DoxyCompactList}\item 
+Id \hyperlink{game_8h_ac6a628f2106f81c37d0e83c67920615f}{game\+\_\+get\+\_\+player\+\_\+location} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em se obtiene el espacio en el que se encuentra el jugador \end{DoxyCompactList}\item 
+Id \hyperlink{game_8h_aa84eca5a1131daafd7acbf74263b6f82}{game\+\_\+get\+\_\+object\+\_\+location} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em se obtiene el espacio en el que se encuentra el objeto \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{game_8h_a325504cf9558c0f25eae56aa35633941}{game\+\_\+get\+\_\+object\+\_\+name} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em se obtiene el nombre de un objeto \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{game_8h_ad38faa7e1bd505f0580a5ade1a7c05d8}{game\+\_\+get\+\_\+description} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em se obtiene una descripción \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{game_8h_a93742f50e4d1d3dc992b1365ab124c09}{game\+\_\+get\+\_\+object\+\_\+description} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em se obtiene la descripción de un objeto \end{DoxyCompactList}\item 
+T\+\_\+\+Command \hyperlink{game_8h_ac35df1afdade2b7659ebbcfeca1f0c35}{game\+\_\+get\+\_\+last\+\_\+command} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em obtiene el ultimo comando introducido \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{game_8h_a77ea299e7f8a9df0945512c568e2f40d}{game\+\_\+get\+\_\+command\+\_\+imput} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em obtiene el ultimo imput introducido \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game_8h_ae5ad86de0a92d9eccb234948458da7f1}{game\+\_\+add\+\_\+space} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{struct__Space}{Space} $\ast$space)
+\begin{DoxyCompactList}\small\item\em añade un espacio al juego \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game_8h_a9597a8e456aa74db536e87d56f56c3b4}{game\+\_\+add\+\_\+object} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$object)
+\begin{DoxyCompactList}\small\item\em añade un objeto al juego \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game_8h_a4691bee17d5784ad6eb257dfbb252c27}{game\+\_\+add\+\_\+link} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, \hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$link)
+\begin{DoxyCompactList}\small\item\em añade un link al juego \end{DoxyCompactList}\item 
+Id \hyperlink{game_8h_ad2dfd865e2bd2c545a15d33f4d1cf3ae}{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, int position)
+\begin{DoxyCompactList}\small\item\em obtiene la id de un espacio en el juego \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game_8h_a492ca9fb594442dc43fc7d18a3820426}{game\+\_\+set\+\_\+player\+\_\+location} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em establece una ubicacion a un jugador \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{game_8h_ad361335e40fd953eaf6839414617eb5b}{game\+\_\+set\+\_\+object\+\_\+location} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game, Id id)
+\begin{DoxyCompactList}\small\item\em establece una ubicacion a un objeto \end{DoxyCompactList}\item 
+Id \hyperlink{game_8h_afe07feb32401c8c364146eb5e82e3e9b}{game\+\_\+inspect\+\_\+select} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em se obtiene la id del elemento inspeccionado \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{game_8h_abcf73faabbfd7b3c52e8881ec4dc0059}{game\+\_\+get\+\_\+space\+\_\+description} (\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$game)
+\begin{DoxyCompactList}\small\item\em se obtiene la descripción de un espacio \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementa la interfaz del juego y todos los callbacks para los diversos comandos. 
+
+\begin{DoxyAuthor}{Authors}
+Luis Nucifora y Álvaro Platón 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+11/03/2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}\label{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}} 
+\index{game.\+h@{game.\+h}!Game@{Game}}
+\index{Game@{Game}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{Game}{Game}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct__Game}{\+\_\+\+Game} \hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}}
+
+
+
+La estructura de nuestro juego. 
+
+Almacena las diferentes informaciones de nuestro juego 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{game_8h_a4691bee17d5784ad6eb257dfbb252c27}\label{game_8h_a4691bee17d5784ad6eb257dfbb252c27}} 
+\index{game.\+h@{game.\+h}!game\+\_\+add\+\_\+link@{game\+\_\+add\+\_\+link}}
+\index{game\+\_\+add\+\_\+link@{game\+\_\+add\+\_\+link}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+add\+\_\+link()}{game\_add\_link()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+add\+\_\+link (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{\hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link} $\ast$}]{link }\end{DoxyParamCaption})}
+
+
+
+añade un link al juego 
+
+game. El juego al que añadimos el link  space. El link que añadimos al juego \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a9597a8e456aa74db536e87d56f56c3b4}\label{game_8h_a9597a8e456aa74db536e87d56f56c3b4}} 
+\index{game.\+h@{game.\+h}!game\+\_\+add\+\_\+object@{game\+\_\+add\+\_\+object}}
+\index{game\+\_\+add\+\_\+object@{game\+\_\+add\+\_\+object}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+add\+\_\+object()}{game\_add\_object()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+add\+\_\+object (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{\hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object} $\ast$}]{object }\end{DoxyParamCaption})}
+
+
+
+añade un objeto al juego 
+
+game. El juego al que añadimos el objeto  space. El objeto que añadimos al juego \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ae5ad86de0a92d9eccb234948458da7f1}\label{game_8h_ae5ad86de0a92d9eccb234948458da7f1}} 
+\index{game.\+h@{game.\+h}!game\+\_\+add\+\_\+space@{game\+\_\+add\+\_\+space}}
+\index{game\+\_\+add\+\_\+space@{game\+\_\+add\+\_\+space}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+add\+\_\+space()}{game\_add\_space()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+add\+\_\+space (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{\hyperlink{struct__Space}{Space} $\ast$}]{space }\end{DoxyParamCaption})}
+
+
+
+añade un espacio al juego 
+
+game. El juego al que añadimos el espacio  space. El espacio que añadimos al juego \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR
+\end{DoxyReturn}
+Funciones de adición de elementos  game. El juego al que añadimos el espacio  space. El espacio que añadimos al juego \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a1cdbe3f06b9bf49eb5e334a22ad3b2b9}\label{game_8h_a1cdbe3f06b9bf49eb5e334a22ad3b2b9}} 
+\index{game.\+h@{game.\+h}!game\+\_\+create@{game\+\_\+create}}
+\index{game\+\_\+create@{game\+\_\+create}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+create()}{game\_create()}}
+{\footnotesize\ttfamily \hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game}$\ast$ game\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+se crea nuestro juego. 
+
+game. Se pasa el juego como puntero a crear \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR
+\end{DoxyReturn}
+Implementación de la interfaz de juego Funciones de creación y destrucción del Juego  game. Se pasa el juego como puntero a crear \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_afc77f90739be0fd45b7f5616e543bfae}\label{game_8h_afc77f90739be0fd45b7f5616e543bfae}} 
+\index{game.\+h@{game.\+h}!game\+\_\+create\+\_\+from\+\_\+file@{game\+\_\+create\+\_\+from\+\_\+file}}
+\index{game\+\_\+create\+\_\+from\+\_\+file@{game\+\_\+create\+\_\+from\+\_\+file}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+create\+\_\+from\+\_\+file()}{game\_create\_from\_file()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+create\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+creamos nuestro juego a partir de un archivo 
+
+game. Pasamos el juego como puntero a crear  filename. El fichero que se usara para crear el juego \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a0736924a1235c0e6fe9b6d91c2a12af8}\label{game_8h_a0736924a1235c0e6fe9b6d91c2a12af8}} 
+\index{game.\+h@{game.\+h}!game\+\_\+destroy@{game\+\_\+destroy}}
+\index{game\+\_\+destroy@{game\+\_\+destroy}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+destroy()}{game\_destroy()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+libera la memoria reservada para nuestro juego 
+
+game. El juego que vamos a liberar \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a77ea299e7f8a9df0945512c568e2f40d}\label{game_8h_a77ea299e7f8a9df0945512c568e2f40d}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+command\+\_\+imput@{game\+\_\+get\+\_\+command\+\_\+imput}}
+\index{game\+\_\+get\+\_\+command\+\_\+imput@{game\+\_\+get\+\_\+command\+\_\+imput}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+command\+\_\+imput()}{game\_get\_command\_imput()}}
+{\footnotesize\ttfamily char$\ast$ game\+\_\+get\+\_\+command\+\_\+imput (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+obtiene el ultimo imput introducido 
+
+game. El juego en el que buscamos el ultimo imput \begin{DoxyReturn}{Returns}
+devuelve el ultimo imput introducido 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ad38faa7e1bd505f0580a5ade1a7c05d8}\label{game_8h_ad38faa7e1bd505f0580a5ade1a7c05d8}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+description@{game\+\_\+get\+\_\+description}}
+\index{game\+\_\+get\+\_\+description@{game\+\_\+get\+\_\+description}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+description()}{game\_get\_description()}}
+{\footnotesize\ttfamily char$\ast$ game\+\_\+get\+\_\+description (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+se obtiene una descripción 
+
+game. El juego al que nos referimos \begin{DoxyReturn}{Returns}
+devuelve la descripción la que nos referimos, o N\+U\+LL si hubo algun problema 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a2456a759356a1d887d153074c08964cd}\label{game_8h_a2456a759356a1d887d153074c08964cd}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+die@{game\+\_\+get\+\_\+die}}
+\index{game\+\_\+get\+\_\+die@{game\+\_\+get\+\_\+die}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+die()}{game\_get\_die()}}
+{\footnotesize\ttfamily int game\+\_\+get\+\_\+die (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+se obtiene un número entre 1 y 6 simulando la tirada de un dado 
+
+game. El juego al que pertenece el dado \begin{DoxyReturn}{Returns}
+se devuelve el número entre el 1 y 6, o -\/1 si hay algún error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ac35df1afdade2b7659ebbcfeca1f0c35}\label{game_8h_ac35df1afdade2b7659ebbcfeca1f0c35}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+last\+\_\+command@{game\+\_\+get\+\_\+last\+\_\+command}}
+\index{game\+\_\+get\+\_\+last\+\_\+command@{game\+\_\+get\+\_\+last\+\_\+command}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+last\+\_\+command()}{game\_get\_last\_command()}}
+{\footnotesize\ttfamily T\+\_\+\+Command game\+\_\+get\+\_\+last\+\_\+command (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+obtiene el ultimo comando introducido 
+
+game. El juego en el que buscamos el ultimo comando \begin{DoxyReturn}{Returns}
+devuelve el ultimo comando introducido 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a1064ec927b8c33cf55982b73845db7d3}\label{game_8h_a1064ec927b8c33cf55982b73845db7d3}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+link@{game\+\_\+get\+\_\+link}}
+\index{game\+\_\+get\+\_\+link@{game\+\_\+get\+\_\+link}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+link()}{game\_get\_link()}}
+{\footnotesize\ttfamily \hyperlink{link_8h_ae3b299941e67be6971bfd64a25505eff}{Link}$\ast$ game\+\_\+get\+\_\+link (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+se obtiene el link al cual pertenece una id 
+
+game. El juego al que pertenece el espacio  id. La id del link a buscar \begin{DoxyReturn}{Returns}
+se devuelve la direccion del link que coincide con la id, o N\+U\+LL si ninguno coincide 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a9dca92a603769c72a708a7d042e76dfa}\label{game_8h_a9dca92a603769c72a708a7d042e76dfa}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+object@{game\+\_\+get\+\_\+object}}
+\index{game\+\_\+get\+\_\+object@{game\+\_\+get\+\_\+object}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+object()}{game\_get\_object()}}
+{\footnotesize\ttfamily \hyperlink{object_8h_a7f8bbcda919b65ce67f92fba08e0212f}{Object}$\ast$ game\+\_\+get\+\_\+object (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+se obtiene el objeto al cual pertenece una id 
+
+game. El juego al que pertenece el objeto  id. La id del objeto a buscar \begin{DoxyReturn}{Returns}
+se devuelve la direccion del objeto que coincide con la id, o N\+U\+LL si ninguno coincide 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a93742f50e4d1d3dc992b1365ab124c09}\label{game_8h_a93742f50e4d1d3dc992b1365ab124c09}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+object\+\_\+description@{game\+\_\+get\+\_\+object\+\_\+description}}
+\index{game\+\_\+get\+\_\+object\+\_\+description@{game\+\_\+get\+\_\+object\+\_\+description}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+object\+\_\+description()}{game\_get\_object\_description()}}
+{\footnotesize\ttfamily char$\ast$ game\+\_\+get\+\_\+object\+\_\+description (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+se obtiene la descripción de un objeto 
+
+game. El juego al que nos referimos  id. La id del objeto del cual vamos a obtener la descripción \begin{DoxyReturn}{Returns}
+devuelve la descripción del objeto al que nos referimos, o N\+U\+LL si hubo algun problema
+\end{DoxyReturn}
+game. El juego al que nos referimos  id. La id del objeto del cual vamos a obtener el nombre \begin{DoxyReturn}{Returns}
+devuelve el nombre del objeto al que nos referimos, o N\+U\+LL si hubo algun problema 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a59cdb9346d21f3b4746d2b8e3897e653}\label{game_8h_a59cdb9346d21f3b4746d2b8e3897e653}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+object\+\_\+id@{game\+\_\+get\+\_\+object\+\_\+id}}
+\index{game\+\_\+get\+\_\+object\+\_\+id@{game\+\_\+get\+\_\+object\+\_\+id}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+object\+\_\+id()}{game\_get\_object\_id()}}
+{\footnotesize\ttfamily Id game\+\_\+get\+\_\+object\+\_\+id (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+se obtiene el id del objeto 
+
+game. El juego al que pertenece el objeto  i. El numero del objeto a buscar \begin{DoxyReturn}{Returns}
+se devuelve el número del objeto 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_aa84eca5a1131daafd7acbf74263b6f82}\label{game_8h_aa84eca5a1131daafd7acbf74263b6f82}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+object\+\_\+location@{game\+\_\+get\+\_\+object\+\_\+location}}
+\index{game\+\_\+get\+\_\+object\+\_\+location@{game\+\_\+get\+\_\+object\+\_\+location}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+object\+\_\+location()}{game\_get\_object\_location()}}
+{\footnotesize\ttfamily Id game\+\_\+get\+\_\+object\+\_\+location (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+se obtiene el espacio en el que se encuentra el objeto 
+
+game. El juego al que pertencece el objeto  id. El id del objeto cuya localización queremos encontrar \begin{DoxyReturn}{Returns}
+devuelve la id del espacio en la cual esta el objeto, o N\+O\+\_\+\+ID si hubo algun problema 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a325504cf9558c0f25eae56aa35633941}\label{game_8h_a325504cf9558c0f25eae56aa35633941}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+object\+\_\+name@{game\+\_\+get\+\_\+object\+\_\+name}}
+\index{game\+\_\+get\+\_\+object\+\_\+name@{game\+\_\+get\+\_\+object\+\_\+name}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+object\+\_\+name()}{game\_get\_object\_name()}}
+{\footnotesize\ttfamily char$\ast$ game\+\_\+get\+\_\+object\+\_\+name (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+se obtiene el nombre de un objeto 
+
+game. El juego al que nos referimos  id. La id del objeto del cual vamos a obtener el nombre \begin{DoxyReturn}{Returns}
+devuelve el nombre del objeto al que nos referimos, o N\+U\+LL si hubo algun problema 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a84ba9051087163657a08de5c0ed55e1c}\label{game_8h_a84ba9051087163657a08de5c0ed55e1c}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+object\+\_\+num@{game\+\_\+get\+\_\+object\+\_\+num}}
+\index{game\+\_\+get\+\_\+object\+\_\+num@{game\+\_\+get\+\_\+object\+\_\+num}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+object\+\_\+num()}{game\_get\_object\_num()}}
+{\footnotesize\ttfamily int game\+\_\+get\+\_\+object\+\_\+num (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+se obtiene el número del objeto 
+
+game. El juego al que pertenece el objeto  id. La id del objeto a buscar \begin{DoxyReturn}{Returns}
+se devuelve el número del objeto que coincide con la id, o -\/1 si ninguno coincide 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ac6a628f2106f81c37d0e83c67920615f}\label{game_8h_ac6a628f2106f81c37d0e83c67920615f}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+player\+\_\+location@{game\+\_\+get\+\_\+player\+\_\+location}}
+\index{game\+\_\+get\+\_\+player\+\_\+location@{game\+\_\+get\+\_\+player\+\_\+location}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+player\+\_\+location()}{game\_get\_player\_location()}}
+{\footnotesize\ttfamily Id game\+\_\+get\+\_\+player\+\_\+location (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+se obtiene el espacio en el que se encuentra el jugador 
+
+game. El juego al que pertencece el jugador \begin{DoxyReturn}{Returns}
+devuelve la id del espacio en la cual esta el jugador, o N\+U\+LL si hubo algun problema 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a69d94da9d27b542d3ebdeb8b60f1f2dc}\label{game_8h_a69d94da9d27b542d3ebdeb8b60f1f2dc}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+space@{game\+\_\+get\+\_\+space}}
+\index{game\+\_\+get\+\_\+space@{game\+\_\+get\+\_\+space}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+space()}{game\_get\_space()}}
+{\footnotesize\ttfamily \hyperlink{struct__Space}{Space}$\ast$ game\+\_\+get\+\_\+space (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+se obtiene el espacio al cual pertenece una id 
+
+se obtiene el espacio en el que se desarrolla el juego
+
+game. El juego al que pertenece el espacio  id. La id del espacio a buscar \begin{DoxyReturn}{Returns}
+se devuelve la direccion del espacio que coincide con la id, o N\+U\+LL si ninguno coincide
+\end{DoxyReturn}
+game. El juego al que nos referimos  id. La id del espacio al que nos referimos \begin{DoxyReturn}{Returns}
+devuelve el espacio donde se desarrolla e juego, o N\+U\+LL si hubo algun problema
+\end{DoxyReturn}
+se obtiene el espacio al cual pertenece una id
+
+game. El juego al que nos referimos  id. La id del espacio al que nos referimos \begin{DoxyReturn}{Returns}
+devuelve el espacio donde se desarrolla e juego, o N\+U\+LL si hubo algun problema 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_abcf73faabbfd7b3c52e8881ec4dc0059}\label{game_8h_abcf73faabbfd7b3c52e8881ec4dc0059}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+space\+\_\+description@{game\+\_\+get\+\_\+space\+\_\+description}}
+\index{game\+\_\+get\+\_\+space\+\_\+description@{game\+\_\+get\+\_\+space\+\_\+description}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+space\+\_\+description()}{game\_get\_space\_description()}}
+{\footnotesize\ttfamily char$\ast$ game\+\_\+get\+\_\+space\+\_\+description (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+se obtiene la descripción de un espacio 
+
+game. El juego al que nos referimos \begin{DoxyReturn}{Returns}
+devuelve la descripción del espacio al que nos referimos, o N\+U\+LL si hubo algun problema 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ad2dfd865e2bd2c545a15d33f4d1cf3ae}\label{game_8h_ad2dfd865e2bd2c545a15d33f4d1cf3ae}} 
+\index{game.\+h@{game.\+h}!game\+\_\+get\+\_\+space\+\_\+id\+\_\+at@{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at}}
+\index{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at@{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+get\+\_\+space\+\_\+id\+\_\+at()}{game\_get\_space\_id\_at()}}
+{\footnotesize\ttfamily Id game\+\_\+get\+\_\+space\+\_\+id\+\_\+at (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{int}]{position }\end{DoxyParamCaption})}
+
+
+
+obtiene la id de un espacio en el juego 
+
+game. Juego del que se obtiene la id del espacio  position. Posicion del espacio del juego que nos interesa \begin{DoxyReturn}{Returns}
+devuelve la id del espacio pedido o devuelve N\+O\+\_\+\+ID si hubo algun error
+\end{DoxyReturn}
+Funciones de obtención de información (getters)  game. Juego del que se obtiene la id del espacio  position. Posicion del espacio del juego que nos interesa \begin{DoxyReturn}{Returns}
+devuelve la id del espacio pedido o devuelve N\+O\+\_\+\+ID si hubo algun error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_afe07feb32401c8c364146eb5e82e3e9b}\label{game_8h_afe07feb32401c8c364146eb5e82e3e9b}} 
+\index{game.\+h@{game.\+h}!game\+\_\+inspect\+\_\+select@{game\+\_\+inspect\+\_\+select}}
+\index{game\+\_\+inspect\+\_\+select@{game\+\_\+inspect\+\_\+select}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+inspect\+\_\+select()}{game\_inspect\_select()}}
+{\footnotesize\ttfamily Id game\+\_\+inspect\+\_\+select (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+se obtiene la id del elemento inspeccionado 
+
+game. El juego al que nos referimos \begin{DoxyReturn}{Returns}
+devuelve la id del elemento inspeccionado, o N\+U\+LL si hubo algun problema 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_aa6efe0650af110bbd84e742cc8046d93}\label{game_8h_aa6efe0650af110bbd84e742cc8046d93}} 
+\index{game.\+h@{game.\+h}!game\+\_\+is\+\_\+over@{game\+\_\+is\+\_\+over}}
+\index{game\+\_\+is\+\_\+over@{game\+\_\+is\+\_\+over}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+is\+\_\+over()}{game\_is\_over()}}
+{\footnotesize\ttfamily B\+O\+OL game\+\_\+is\+\_\+over (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+comprueba si nuestro juego ha acabado 
+
+game. El juego que comprobamos si ha llegado a su fin \begin{DoxyReturn}{Returns}
+si el juego ha acabado devuelve T\+R\+UE y si no ha acabado, devuelve F\+A\+L\+SE 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a33a5ed8937423f8c012df3cedad4fa4c}\label{game_8h_a33a5ed8937423f8c012df3cedad4fa4c}} 
+\index{game.\+h@{game.\+h}!game\+\_\+print\+\_\+data@{game\+\_\+print\+\_\+data}}
+\index{game\+\_\+print\+\_\+data@{game\+\_\+print\+\_\+data}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+print\+\_\+data()}{game\_print\_data()}}
+{\footnotesize\ttfamily void game\+\_\+print\+\_\+data (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+imprime la informacion de nuestro juego 
+
+game. Juego del que se imprimira la informacion \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a108f413649a6dc99d3ffeed092dc15f5}\label{game_8h_a108f413649a6dc99d3ffeed092dc15f5}} 
+\index{game.\+h@{game.\+h}!game\+\_\+print\+\_\+screen@{game\+\_\+print\+\_\+screen}}
+\index{game\+\_\+print\+\_\+screen@{game\+\_\+print\+\_\+screen}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+print\+\_\+screen()}{game\_print\_screen()}}
+{\footnotesize\ttfamily void game\+\_\+print\+\_\+screen (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+
+imprime por pantalla nuestro juego 
+
+game. El juego que vamos a imprimir por pantalla \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_ad361335e40fd953eaf6839414617eb5b}\label{game_8h_ad361335e40fd953eaf6839414617eb5b}} 
+\index{game.\+h@{game.\+h}!game\+\_\+set\+\_\+object\+\_\+location@{game\+\_\+set\+\_\+object\+\_\+location}}
+\index{game\+\_\+set\+\_\+object\+\_\+location@{game\+\_\+set\+\_\+object\+\_\+location}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+set\+\_\+object\+\_\+location()}{game\_set\_object\_location()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+set\+\_\+object\+\_\+location (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+establece una ubicacion a un objeto 
+
+game. Juego al que pertenece el objeto  id. Id del espacio que se quiere asignar \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no devuelve E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a492ca9fb594442dc43fc7d18a3820426}\label{game_8h_a492ca9fb594442dc43fc7d18a3820426}} 
+\index{game.\+h@{game.\+h}!game\+\_\+set\+\_\+player\+\_\+location@{game\+\_\+set\+\_\+player\+\_\+location}}
+\index{game\+\_\+set\+\_\+player\+\_\+location@{game\+\_\+set\+\_\+player\+\_\+location}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+set\+\_\+player\+\_\+location()}{game\_set\_player\_location()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+set\+\_\+player\+\_\+location (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+establece una ubicacion a un jugador 
+
+game. Juego al que pertenece el jugador  id. Id del espacio que se quiere asignar \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no devuelve E\+R\+R\+OR
+\end{DoxyReturn}
+Funciones de establecimiento de datos (setters)  game. Juego al que pertenece el jugador  id. Id del espacio que se quiere asignar \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no devuelve E\+R\+R\+OR 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8h_a045f6326f72665b02e730d718120a0d3}\label{game_8h_a045f6326f72665b02e730d718120a0d3}} 
+\index{game.\+h@{game.\+h}!game\+\_\+update@{game\+\_\+update}}
+\index{game\+\_\+update@{game\+\_\+update}!game.\+h@{game.\+h}}
+\subsubsection{\texorpdfstring{game\+\_\+update()}{game\_update()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US game\+\_\+update (\begin{DoxyParamCaption}\item[{\hyperlink{game_8h_a57156d39c530aec3fba3a9dad8c2dc6a}{Game} $\ast$}]{game,  }\item[{\hyperlink{command_8h_a7d2935971c252377cb0fc1c8545dc2bc}{Command} $\ast$}]{cmd }\end{DoxyParamCaption})}
+
+
+
+actualiza nuestro juego cuando se introduce un comando 
+
+game. El juego que vamos a actualizar  cmd. El comando que vamos a introducir \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR
+\end{DoxyReturn}
+Funciones de impresión y actualización  game. El juego que vamos a actualizar  cmd. El comando que vamos a introducir \begin{DoxyReturn}{Returns}
+devuelve OK si todo ha ido bien y si no, devuelve E\+R\+R\+OR 
+\end{DoxyReturn}

@@ -1,0 +1,195 @@
+\hypertarget{inventory_8c}{}\section{inventory.\+c File Reference}
+\label{inventory_8c}\index{inventory.\+c@{inventory.\+c}}
+
+
+Implementa el inventario de objetos que porta el jugador.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}inventory.\+h\char`\"{}}\newline
+Include dependency graph for inventory.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{inventory_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__Inventory}{\+\_\+\+Inventory}
+\begin{DoxyCompactList}\small\item\em La estructura de un inventory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct__Inventory}{Inventory} $\ast$ \hyperlink{inventory_8c_a5d6b47f7a727932c56d66a65fb540910}{inventory\+\_\+create} ()
+\begin{DoxyCompactList}\small\item\em \+: reserva memoria dinámica suficiente para almacenar un inventory \+: no tiene parametros \end{DoxyCompactList}\item 
+void \hyperlink{inventory_8c_a90250adb627aaa1305954287a9154966}{inventory\+\_\+destroy} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv)
+\begin{DoxyCompactList}\small\item\em \+: libera la memoria dinámica reservada del link que se ha recibido \+: la direccion del inventory a destruir \end{DoxyCompactList}\item 
+B\+O\+OL \hyperlink{inventory_8c_ae324748b3dd3350c397037f5e29b2fea}{inventory\+\_\+compare} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv, Id id)
+\begin{DoxyCompactList}\small\item\em \+: compara si esta el objeto en el inventory \+: la direccion del inventory \+: la id del objeto \end{DoxyCompactList}\item 
+int \hyperlink{inventory_8c_a0d374c2d2f1475d0d4f0eaf070cb48bd}{inventory\+\_\+get\+\_\+max\+\_\+objects} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv)
+\begin{DoxyCompactList}\small\item\em \+: obtiene el numero de objetos maximos \+: la direccion del inventory \end{DoxyCompactList}\item 
+Id $\ast$ \hyperlink{inventory_8c_add0472e2ae35233069b9b05e2edaeb97}{inventory\+\_\+get\+\_\+objects} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv)
+\begin{DoxyCompactList}\small\item\em \+: obtiene los id de los objetos del inventory \+: la direccion del inventory \end{DoxyCompactList}\item 
+int \hyperlink{inventory_8c_a0a579383ba0156efd80ea427cdc566f0}{inventory\+\_\+get\+\_\+num\+\_\+objects} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv)
+\begin{DoxyCompactList}\small\item\em \+: obtiene el numero de objetos que hay \+: la direccion del inventory \end{DoxyCompactList}\item 
+Id \hyperlink{inventory_8c_ae8125cdba8b9c0fca8ec379e9b31d920}{inventory\+\_\+get\+\_\+object\+\_\+id} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv, int i)
+\begin{DoxyCompactList}\small\item\em \+: obtiene el id del objeto deseado \+: la direccion del inventory \+: numero que marca la posicion del objeto que se quiere tener el id \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{inventory_8c_a1a697c92f24f5ec6e9bd648525301706}{inventory\+\_\+set\+\_\+object} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv, Id id)
+\begin{DoxyCompactList}\small\item\em \+: guardar un objeto en el set perteneciente al inventory \+: la direccion del inventory \+: El id del objeto \end{DoxyCompactList}\item 
+S\+T\+A\+T\+US \hyperlink{inventory_8c_ab980e0100bad562a425630f8a3402a01}{inventory\+\_\+drop\+\_\+object} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv, Id id)
+\begin{DoxyCompactList}\small\item\em \+: deja un objeto del inventory \+: la direccion del inventory \+: El id del objeto \end{DoxyCompactList}\item 
+void \hyperlink{inventory_8c_ac4cc8e3348cafe1152499e64cd2737ea}{inventory\+\_\+print} (\hyperlink{struct__Inventory}{Inventory} $\ast$inv)
+\begin{DoxyCompactList}\small\item\em \+: imprime por pantalla el inventory \+: la direccion del inventory \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementa el inventario de objetos que porta el jugador. 
+
+\begin{DoxyAuthor}{Authors}
+Luis Nucifora 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+15/03/2019 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+G\+NU Public License 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{inventory_8c_ae324748b3dd3350c397037f5e29b2fea}\label{inventory_8c_ae324748b3dd3350c397037f5e29b2fea}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+compare@{inventory\+\_\+compare}}
+\index{inventory\+\_\+compare@{inventory\+\_\+compare}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+compare()}{inventory\_compare()}}
+{\footnotesize\ttfamily B\+O\+OL inventory\+\_\+compare (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Inventory}{Inventory} $\ast$}]{inv,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+\+: compara si esta el objeto en el inventory \+: la direccion del inventory \+: la id del objeto 
+
+\begin{DoxyReturn}{Returns}
+\+: T\+R\+UE si esta y F\+A\+L\+SE si no 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a5d6b47f7a727932c56d66a65fb540910}\label{inventory_8c_a5d6b47f7a727932c56d66a65fb540910}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+create@{inventory\+\_\+create}}
+\index{inventory\+\_\+create@{inventory\+\_\+create}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+create()}{inventory\_create()}}
+{\footnotesize\ttfamily \hyperlink{struct__Inventory}{Inventory}$\ast$ inventory\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\+: reserva memoria dinámica suficiente para almacenar un inventory \+: no tiene parametros 
+
+\begin{DoxyReturn}{Returns}
+\+: la dirección del inventory creado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a90250adb627aaa1305954287a9154966}\label{inventory_8c_a90250adb627aaa1305954287a9154966}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+destroy@{inventory\+\_\+destroy}}
+\index{inventory\+\_\+destroy@{inventory\+\_\+destroy}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+destroy()}{inventory\_destroy()}}
+{\footnotesize\ttfamily void inventory\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Inventory}{Inventory} $\ast$}]{inv }\end{DoxyParamCaption})}
+
+
+
+\+: libera la memoria dinámica reservada del link que se ha recibido \+: la direccion del inventory a destruir 
+
+\begin{DoxyReturn}{Returns}
+\+: nada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_ab980e0100bad562a425630f8a3402a01}\label{inventory_8c_ab980e0100bad562a425630f8a3402a01}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+drop\+\_\+object@{inventory\+\_\+drop\+\_\+object}}
+\index{inventory\+\_\+drop\+\_\+object@{inventory\+\_\+drop\+\_\+object}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+drop\+\_\+object()}{inventory\_drop\_object()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US inventory\+\_\+drop\+\_\+object (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Inventory}{Inventory} $\ast$}]{inv,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+\+: deja un objeto del inventory \+: la direccion del inventory \+: El id del objeto 
+
+\begin{DoxyReturn}{Returns}
+\+: devuelve OK si ha salido bien o E\+R\+R\+OR de lo contrario 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a0d374c2d2f1475d0d4f0eaf070cb48bd}\label{inventory_8c_a0d374c2d2f1475d0d4f0eaf070cb48bd}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+get\+\_\+max\+\_\+objects@{inventory\+\_\+get\+\_\+max\+\_\+objects}}
+\index{inventory\+\_\+get\+\_\+max\+\_\+objects@{inventory\+\_\+get\+\_\+max\+\_\+objects}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+get\+\_\+max\+\_\+objects()}{inventory\_get\_max\_objects()}}
+{\footnotesize\ttfamily int inventory\+\_\+get\+\_\+max\+\_\+objects (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Inventory}{Inventory} $\ast$}]{inv }\end{DoxyParamCaption})}
+
+
+
+\+: obtiene el numero de objetos maximos \+: la direccion del inventory 
+
+\begin{DoxyReturn}{Returns}
+\+: el numero de objetos maximos 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a0a579383ba0156efd80ea427cdc566f0}\label{inventory_8c_a0a579383ba0156efd80ea427cdc566f0}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+get\+\_\+num\+\_\+objects@{inventory\+\_\+get\+\_\+num\+\_\+objects}}
+\index{inventory\+\_\+get\+\_\+num\+\_\+objects@{inventory\+\_\+get\+\_\+num\+\_\+objects}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+get\+\_\+num\+\_\+objects()}{inventory\_get\_num\_objects()}}
+{\footnotesize\ttfamily int inventory\+\_\+get\+\_\+num\+\_\+objects (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Inventory}{Inventory} $\ast$}]{inv }\end{DoxyParamCaption})}
+
+
+
+\+: obtiene el numero de objetos que hay \+: la direccion del inventory 
+
+\begin{DoxyReturn}{Returns}
+\+: el numero de objetos que hay 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_ae8125cdba8b9c0fca8ec379e9b31d920}\label{inventory_8c_ae8125cdba8b9c0fca8ec379e9b31d920}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+get\+\_\+object\+\_\+id@{inventory\+\_\+get\+\_\+object\+\_\+id}}
+\index{inventory\+\_\+get\+\_\+object\+\_\+id@{inventory\+\_\+get\+\_\+object\+\_\+id}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+get\+\_\+object\+\_\+id()}{inventory\_get\_object\_id()}}
+{\footnotesize\ttfamily Id inventory\+\_\+get\+\_\+object\+\_\+id (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Inventory}{Inventory} $\ast$}]{inv,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+\+: obtiene el id del objeto deseado \+: la direccion del inventory \+: numero que marca la posicion del objeto que se quiere tener el id 
+
+\begin{DoxyReturn}{Returns}
+\+: el id del objeto si esta, sino N\+O\+\_\+\+ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_add0472e2ae35233069b9b05e2edaeb97}\label{inventory_8c_add0472e2ae35233069b9b05e2edaeb97}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+get\+\_\+objects@{inventory\+\_\+get\+\_\+objects}}
+\index{inventory\+\_\+get\+\_\+objects@{inventory\+\_\+get\+\_\+objects}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+get\+\_\+objects()}{inventory\_get\_objects()}}
+{\footnotesize\ttfamily Id$\ast$ inventory\+\_\+get\+\_\+objects (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Inventory}{Inventory} $\ast$}]{inv }\end{DoxyParamCaption})}
+
+
+
+\+: obtiene los id de los objetos del inventory \+: la direccion del inventory 
+
+\begin{DoxyReturn}{Returns}
+\+: el array con los id de los objetos que contiene 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_ac4cc8e3348cafe1152499e64cd2737ea}\label{inventory_8c_ac4cc8e3348cafe1152499e64cd2737ea}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+print@{inventory\+\_\+print}}
+\index{inventory\+\_\+print@{inventory\+\_\+print}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+print()}{inventory\_print()}}
+{\footnotesize\ttfamily void inventory\+\_\+print (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Inventory}{Inventory} $\ast$}]{inv }\end{DoxyParamCaption})}
+
+
+
+\+: imprime por pantalla el inventory \+: la direccion del inventory 
+
+\begin{DoxyReturn}{Returns}
+\+: nada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a1a697c92f24f5ec6e9bd648525301706}\label{inventory_8c_a1a697c92f24f5ec6e9bd648525301706}} 
+\index{inventory.\+c@{inventory.\+c}!inventory\+\_\+set\+\_\+object@{inventory\+\_\+set\+\_\+object}}
+\index{inventory\+\_\+set\+\_\+object@{inventory\+\_\+set\+\_\+object}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{inventory\+\_\+set\+\_\+object()}{inventory\_set\_object()}}
+{\footnotesize\ttfamily S\+T\+A\+T\+US inventory\+\_\+set\+\_\+object (\begin{DoxyParamCaption}\item[{\hyperlink{struct__Inventory}{Inventory} $\ast$}]{inv,  }\item[{Id}]{id }\end{DoxyParamCaption})}
+
+
+
+\+: guardar un objeto en el set perteneciente al inventory \+: la direccion del inventory \+: El id del objeto 
+
+\begin{DoxyReturn}{Returns}
+\+: si se ha guardado OK, sino E\+R\+R\+OR 
+\end{DoxyReturn}
