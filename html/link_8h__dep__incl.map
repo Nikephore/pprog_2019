@@ -1,0 +1,15 @@
+<map id="link.h" name="link.h">
+<area shape="rect" id="node2" href="$space_8h_source.html" title="space.h" alt="" coords="187,80,255,107"/>
+<area shape="rect" id="node3" href="$game_8h.html" title="Implementa la interfaz del juego y todos los callbacks para los diversos comandos. " alt="" coords="5,155,71,181"/>
+<area shape="rect" id="node13" href="$link_8c.html" title="Se encarga de las funciones y la gestion de los links. " alt="" coords="279,80,333,107"/>
+<area shape="rect" id="node14" href="$link__test_8c.html" title="Se encarga de probar el funcionamiento de los enlaces. " alt="" coords="357,80,439,107"/>
+<area shape="rect" id="node5" href="$game__reader_8h.html" title="Carga los espacios de nuestro juego. " alt="" coords="112,229,220,256"/>
+<area shape="rect" id="node6" href="$graphic__engine_8h.html" title="Muestra la interfaz grafica del juego por pantalla. " alt="" coords="279,304,399,331"/>
+<area shape="rect" id="node10" href="$object_8c.html" title="Se encarga de las funciones y la gestion del objeto de nuestro juego. " alt="" coords="95,155,163,181"/>
+<area shape="rect" id="node11" href="$space_8c.html" title="Se encarga de las funciones y la gestion del espacio de nuestro juego. " alt="" coords="187,155,255,181"/>
+<area shape="rect" id="node12" href="$space__test_8c.html" title="It tests space module. " alt="" coords="279,155,376,181"/>
+<area shape="rect" id="node4" href="$game_8c.html" title="Implementa la interfaz del juego y todos los callbacks para los diversos comandos. " alt="" coords="5,304,71,331"/>
+<area shape="rect" id="node7" href="$game__loop_8c.html" title="Define el bucle de juego. " alt="" coords="110,379,206,405"/>
+<area shape="rect" id="node9" href="$game__reader_8c.html" title="Carga los espacios de nuestro juego. " alt="" coords="147,304,255,331"/>
+<area shape="rect" id="node8" href="$graphic__engine_8c.html" title="Muestra la interfaz grafica del juego por pantalla. " alt="" coords="279,379,399,405"/>
+</map>

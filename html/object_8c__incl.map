@@ -1,0 +1,7 @@
+<map id="object.c" name="object.c">
+<area shape="rect" id="node5" href="$object_8h.html" title="Se encarga de las funciones y la gestion del objeto de nuestro juego. " alt="" coords="249,155,317,181"/>
+<area shape="rect" id="node7" href="$space_8h_source.html" title="space.h" alt="" coords="321,80,389,107"/>
+<area shape="rect" id="node6" href="$types_8h.html" title="Define los tipos comunes. " alt="" coords="353,229,418,256"/>
+<area shape="rect" id="node8" href="$set_8h.html" title="Se encarga de las funciones y la gestion de un conjunto de objetos llamado set. " alt="" coords="392,155,443,181"/>
+<area shape="rect" id="node9" href="$link_8h.html" title="link.h" alt="" coords="467,155,520,181"/>
+</map>

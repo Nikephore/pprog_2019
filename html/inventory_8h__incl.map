@@ -1,0 +1,4 @@
+<map id="inventory.h" name="inventory.h">
+<area shape="rect" id="node2" href="$set_8h.html" title="Se encarga de las funciones y la gestion de un conjunto de objetos llamado set. " alt="" coords="5,80,56,107"/>
+<area shape="rect" id="node3" href="$types_8h.html" title="Define los tipos comunes. " alt="" coords="29,155,94,181"/>
+</map>
