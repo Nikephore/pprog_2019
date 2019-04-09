@@ -213,6 +213,12 @@ void test1_space_get_west();
  * @post La salida debe ser NO_ID
  */
 void test2_space_get_west();
+
+/**
+ * @test Prueba la función obtener el objeto
+ * @pre El espacio es un puntero a la creacion del espacio
+ * @post La salida debe ser un puntero a set
+ */
 void test1_space_get_object();
 
 /**

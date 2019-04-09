@@ -310,6 +310,12 @@ void test2_space_get_name() {
 
 }
 
+/**
+ * @test Prueba la función obtener el objeto
+ * @pre El espacio es un puntero a la creacion del espacio
+ * @post La salida debe ser un puntero a set
+ */
+
 void test1_space_get_object() {
     Space *s;
     s = space_create(1);
