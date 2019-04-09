@@ -57,6 +57,13 @@ Id player_get_location(Player * p);
 */
 int player_get_num_objects(Player * p);
 
+/**
+*@brief Busca un objeto entre los que dispone el Jugador
+*@param1 p. El jugador del que queremos buscar entre sus objetos
+*@param2 id. Id del objeto a buscar
+*@return true si el objeto esta entre los del jugador, devolvera false en caso contrario
+*/
+
 BOOL player_search_object(Player * p, Id id);
 
 /**

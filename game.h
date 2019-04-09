@@ -155,7 +155,20 @@ Id game_get_object_location(Game* game, Id id);
 */
 char * game_get_object_name(Game* game, Id id);
 
+/**
+*@brief se obtiene una descripción
+*@param1 game. El juego al que nos referimos
+*@return devuelve la descripción la que nos referimos, o NULL si hubo algun problema
+*/
+
 char* game_get_description(Game* game);
+
+/**
+*@brief se obtiene la descripción de un objeto
+*@param1 game. El juego al que nos referimos
+*@param2 id. La id del objeto del cual vamos a obtener la descripción
+*@return devuelve la descripción del objeto al que nos referimos, o NULL si hubo algun problema
+*/
 
 char* game_get_object_description(Game* game, Id id);
 
@@ -231,7 +244,19 @@ STATUS game_set_object_location(Game* game, Id id);
 */
 Space* game_get_space(Game* game, Id id);
 
+/**
+*@brief se obtiene la id del elemento inspeccionado
+*@param1 game. El juego al que nos referimos
+*@return devuelve la id del elemento inspeccionado, o NULL si hubo algun problema
+*/
+
 Id game_inspect_select(Game* game);
+
+/**
+*@brief se obtiene la descripción de un espacio
+*@param1 game. El juego al que nos referimos
+*@return devuelve la descripción del espacio al que nos referimos, o NULL si hubo algun problema
+*/
 
 char* game_get_space_description(Game* game);
 

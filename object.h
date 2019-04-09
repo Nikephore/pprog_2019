@@ -58,6 +58,14 @@ char* object_get_name(Object *obj);
 */
 Id object_get_location(Object *obj);
 
+/*
+*
+* @brief: obtiene la descripcion de un objeto
+* @params: recibe como parámetro de entrada un objeto
+* @return: devuelve la id de dicho objeto
+*
+*/
+
 char* object_get_description(Object *obj);
 /*
 *
@@ -88,6 +96,15 @@ STATUS object_set_name(Object* obj, char *name);
 *
 */
 STATUS object_set_location(Object* obj, Id location);
+
+/*
+*
+* @brief: establece la descripcion de un objeto
+* @params1: el objeto del cual se quiere obtener la descripcion
+* @params2: la descripcion del objeto
+* @return: devuelve ERROR si no se ha liberado la memoria, u OK si lo ha hecho correctamente
+*
+*/
 
 STATUS object_set_description(Object* obj, char* description);
 /*
