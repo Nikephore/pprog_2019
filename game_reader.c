@@ -26,7 +26,7 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
   FILE* file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
-  char des[WORD_SIZE] = "";
+  char des[WORD_SIZE] = "", ldes[WORD_SIZE] = "";
   char* aux = "   -   ";
   char* illu[MAX_STRING];
   char* toks = NULL;
@@ -56,6 +56,8 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
       toks = strtok(NULL, "|");
       strcpy(des, toks);
       toks = strtok(NULL, "|");
+      strcpy(ldes, toks);
+      toks = strtok(NULL, "|");
       north = atol(toks);
       toks = strtok(NULL, "|");
       east = atol(toks);
@@ -74,12 +76,12 @@ STATUS game_reader_load_spaces(Game* game, char* filename) {
       }
 
 #ifdef DEBUG
-      printf("Leido: %ld|%s|%s|%ld|%ld|%ld|%ld\n", id, name, des, north, east, south, west);
+      printf("Leido: %ld|%s|%s|%s|%ld|%ld|%ld|%ld\n", id, name, des, ldes, north, east, south, west);
 #endif
       space = space_create(id);
       if (space != NULL) {
 	       space_set_name(space, name);
-         space_set_description(space, des);
+         space_set_description(space, des, ldes);
 	       space_set_north_link(space, north);
 	       space_set_east_link(space, east);
 	       space_set_south_link(space, south);
@@ -115,6 +117,7 @@ STATUS game_reader_load_objects(Game* game, char* filename){
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
   char des[WORD_SIZE] = "";
+  char altdesc[WORD_SIZE] = "";
   char* toks = NULL;
   Id id = NO_ID;
   Id position = NO_ID;
@@ -146,9 +149,11 @@ STATUS game_reader_load_objects(Game* game, char* filename){
       position = atol(toks);
       toks = strtok(NULL, "|");
       strcpy(des, toks);
+      toks = strtok(NULL, "|");
+      strcpy(altdesc, toks);
 
 #ifdef DEBUG
-      printf("Leido: %ld|%s|%ld|%s\n", id, name, position, des);
+      printf("Leido: %ld|%s|%ld|%s|%s\n", id, name, position, des,altdesc);
 #endif
 
 
@@ -160,6 +165,7 @@ STATUS game_reader_load_objects(Game* game, char* filename){
       if (object != NULL) {
     	  object_set_name(object, name);
         object_set_description(object, des);
+        object_set_alt_description(object, altdesc); /*Necesita modificar el data y su lectura*/
         object_set_location(object, position);
         space_add_object(game_get_space(game, position), id);
         game_add_object(game, object);

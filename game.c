@@ -698,6 +698,7 @@ void game_callback_take(Game* game){
           if(game_get_player_location(game) == game_get_object_location(game, aux_id)){ /*Comprueba que jugador y objeto estan en la misma casilla*/
             player_add_element(game->player, aux_id); /*Añade el id del objeto al inventario*/
             object_set_location(game->object[i], NO_ID);
+            object_set_moved(game->object[i]);
             space_delete_object(game_get_space(game, loc), aux_id);
           }
         }

@@ -28,10 +28,10 @@
 #s:26|Casilla 26|Sin relevancia|-1|-1|-1|-1|       ||       ||       |
 
 
-#o:1|FRoja|1|Es la ficha roja.|
-#o:2|FAzul|1|Es la ficha azul.|
-#o:3|FVerde|1|Es la ficha verde.|
-#o:4|FAmarilla|1|Es la ficha amarilla.|
+#o:1|FRoja|1|Es la ficha roja.|Como un tomate|
+#o:2|FAzul|1|Es la ficha azul.|Como el cielo|
+#o:3|FVerde|1|Es la ficha verde.|Como el cesped|
+#o:4|FAmarilla|1|Es la ficha amarilla.|Como un limon|
 
 #l:1|Lnk 1|1|2|
 #l:2|Lnk 2|2|3|

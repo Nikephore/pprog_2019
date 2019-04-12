@@ -105,8 +105,14 @@ STATUS object_set_location(Object* obj, Id location);
 * @return: devuelve ERROR si no se ha liberado la memoria, u OK si lo ha hecho correctamente
 *
 */
-
 STATUS object_set_description(Object* obj, char* description);
+
+/*
+* @brief: establece una descricion alternativa
+* @params1: recibe el objeto
+* @params2: la descripcion alternativa
+*/
+STATUS object_set_alt_description(Object* obj, char* alt);
 /*
 *
 * @brief: imprime la información del objeto por pantalla
@@ -124,5 +130,102 @@ STATUS object_print(Object * obj);
 *
 */
 void object_destroy(Object* obj);
+
+/*
+*
+* @brief: cambia el estado para indicar si un objeto se puede mover
+* @params: recibe como parámetro de entrada el objeto
+* @return: OK si se ha cambiado el estado y ERROR si ha habido algun error
+*
+*/
+STATUS object_set_movable(Object* obj);
+
+/*
+*
+* @brief: indica si se puede mover el objeto
+* @params: recibe como parámetro de entrada el objeto
+* @return: TRUE si se puede mover y FALSE si no se puede mover
+*
+*/
+BOOL object_is_movable(Object* obj);
+
+/*
+*
+* @brief: indica si un objeto se ha movido
+* @params: recibe como parámetro de entrada el objeto
+* @return: TRUE si se ha movido y FALSE si no se ha movido
+*
+*/
+BOOL object_been_moved(Object* obj);
+
+/*
+* @brief: pone en el estado a TRUE de si un objeto ha sido movido
+* @params: recibe como parámetro de entrada el objeto
+* @return: OK si se ha cambiado, ERROR si ha pasado algo
+*/
+STATUS object_set_moved(Object* obj);
+/*
+*
+* @brief: cambia el estado para indicar si un objeto está oculto
+* @params: recibe como parámetro de entrada el objeto
+* @return: OK si se ha cambiado el estado y ERROR ha habido algun error
+*
+*/
+STATUS object_set_hidden(Object* obj);
+
+/*
+*
+* @brief: indica si un objeto está oculto
+* @params: recibe como parámetro de entrada el objeto
+* @return: TRUE si está oculto y FALSE si no está oculto
+*
+*/
+BOOL object_is_hidden(Object* obj);
+
+/*
+*
+* @brief: cambia el estado para indicar si un objeto ilumina
+* @params: recibe como parámetro de entrada el objeto
+* @return: OK si se ha cambiado el estado y ERROR ha habido algun error
+*
+*/
+STATUS object_set_illuminate(Object* obj);
+
+/*
+*
+* @brief: indica si un objeto ilumina un espacio
+* @params: recibe como parámetro de entrada el objeto
+* @return: TRUE si ilumina un espacio y FALSE si no lo ilumina
+*
+*/
+BOOL object_illuminate_space(Object* obj);
+
+/*
+*
+* @brief: indica si un objeto puede abrir un link
+* @params: recibe como parámetro de entrada el objeto
+* @params1: recibe la id del link
+* @return: TRUE si puede abrir ese link y FALSE si no lo abre
+*
+*/
+BOOL object_open_link(Object* obj, Id link);
+
+/*
+*
+* @brief: cambia el estado para indicar si un objeto está encendido
+* @params: recibe como parámetro de entrada el objeto
+* @return: OK si se ha cambiado el estado y ERROR ha habido algun error
+*
+*/
+STATUS object_set_turnedon(Object* obj);
+
+/*
+*
+* @brief: indica si un objeto que puede iluminar está encendido
+* @params: recibe como parámetro de entrada el objeto
+* @return: TRUE si puede iluminar y FALSE si no lo puede iluminar
+*
+*/
+BOOL object_turned_on(Object* obj);
 
 #endif
