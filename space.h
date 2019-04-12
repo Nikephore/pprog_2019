@@ -102,6 +102,30 @@ Id space_get_south_link(Space* space);
 STATUS space_set_east_link(Space* space, Id id);
 
 /**
+*@brief establece el enlace hacia arriba de un espacio
+*@param1 space. Espacio del cual queremos establecerle el oeste
+*@param2  id. Id de arriba
+*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
+*/
+STATUS space_set_up_link(Space* space, Id id);
+
+/**
+*@brief establece el enlace hacia abajo de un espacio
+*@param1 space. Espacio del cual queremos establecerle el oeste
+*@param2  id. Id de abajo
+*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
+*/
+STATUS space_set_down_link(Space* space, Id id);
+
+/**
+*@brief establece la iluminación de un espacio
+*@param1 space. Espacio del cual queremos establecer la iluminación
+*@param2  BOOL. iluminación del espacio.
+*@return devuelve OK si todo ha ido bien y si no devuelve ERROR
+*/
+STATUS space_set_light(Space* space, BOOL light);
+
+/**
 *@brief obtiene el enlace al este del espacio introducido
 *@param1 space. Espacio del cual queremos saber el este
 *@return devuelve la id del este del espacio o NO_ID si ha ocurrido algun error
@@ -124,12 +148,26 @@ STATUS space_set_west_link(Space* space, Id id);
 Id space_get_west_link(Space* space);
 
 /**
+*@brief obtiene la zona superior del espacio introducido
+*@param1 space. Espacio del cual queremos saber el oeste
+*@return devuelve la id de la zona superior del espacio o NO_ID si ha ocurrido algun error
+*/
+Id space_get_up_link(Space* space);
+
+/**
+*@brief obtiene la zona inferior del espacio introducido
+*@param1 space. Espacio del cual queremos saber el oeste
+*@return devuelve la id de la zona inferior del espacio o NO_ID si ha ocurrido algun error
+*/
+Id space_get_down_link(Space* space);
+
+/**
 *@brief establece la descripción de un espacio
 *@param1 space. Espacio del cual queremos establecerle el oeste
 *@param2  char*. descripción del espacio.
 *@return devuelve OK si todo ha ido bien y si no devuelve ERROR
 */
-STATUS space_set_description(Space* space, char* description);
+STATUS space_set_description(Space* space, char* description, char* ldescription);
 
 /**
 *@brief obtiene la descripción del espacio introducido
@@ -137,6 +175,13 @@ STATUS space_set_description(Space* space, char* description);
 *@return devuelve la id del este del espacio o NO_ID si ha ocurrido algun error
 */
 char* space_get_description(Space* space);
+
+/**
+*@brief obtiene la descripción larga del espacio introducido
+*@param1 space. Espacio del cual queremos saber la descripción larga
+*@return devuelve la id del este del espacio o NO_ID si ha ocurrido algun error
+*/
+char* space_get_long_description(Space* space);
 
 /**
 *@brief imprime el espacio por pantalla
