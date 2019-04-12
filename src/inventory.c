@@ -12,12 +12,23 @@
 #include <stdio.h>
 #include "inventory.h"
 
+/**
+* @brief La estructura de un inventory
+*
+* Almacena las diferentes informaciones de un inventory
+*/
 struct _Inventory{
   Set *set;
   int max_objects;
 };
 
-
+/**
+*
+* @brief: reserva memoria dinámica suficiente para almacenar un inventory
+* @params: no tiene parametros
+* @return: la dirección del inventory creado
+*
+*/
 Inventory *inventory_create(){
 
   Inventory *new_inv = NULL;
@@ -34,6 +45,13 @@ Inventory *inventory_create(){
   return new_inv;
 }
 
+/**
+*
+* @brief: libera la memoria dinámica reservada del link que se ha recibido
+* @params: la direccion del inventory a destruir
+* @return: nada
+*
+*/
 void inventory_destroy(Inventory *inv){
 
   if(inv == NULL){
@@ -47,6 +65,15 @@ void inventory_destroy(Inventory *inv){
   return;
 }
 
+
+/**
+*
+* @brief: compara si esta el objeto en el inventory
+* @params: la direccion del inventory
+* @params1: la id del objeto
+* @return: TRUE si esta y FALSE si no
+*
+*/
 BOOL inventory_compare(Inventory *inv, Id id){
   int i;
 
@@ -63,6 +90,14 @@ BOOL inventory_compare(Inventory *inv, Id id){
   return FALSE;
 }
 
+
+/**
+*
+* @brief: obtiene el numero de objetos maximos
+* @params: la direccion del inventory
+* @return: el numero de objetos maximos
+*
+*/
 int inventory_get_max_objects(Inventory *inv){
 
   if(inv == NULL){
@@ -72,6 +107,13 @@ int inventory_get_max_objects(Inventory *inv){
   return inv->max_objects;
 }
 
+/**
+*
+* @brief: obtiene los id de los objetos del inventory
+* @params: la direccion del inventory
+* @return: el array con los id de los objetos que contiene
+*
+*/
 Id* inventory_get_objects(Inventory *inv){
 
   int i = 0;
@@ -90,6 +132,14 @@ Id* inventory_get_objects(Inventory *inv){
   return set_get_all(inv->set);
 }
 
+
+/**
+*
+* @brief: obtiene el numero de objetos que hay
+* @params: la direccion del inventory
+* @return: el numero de objetos que hay
+*
+*/
 int inventory_get_num_objects(Inventory *inv){
 
   if(inv == NULL){
@@ -99,6 +149,14 @@ int inventory_get_num_objects(Inventory *inv){
   return set_get_num_id(inv->set);
 }
 
+/**
+*
+* @brief: obtiene el id del objeto deseado
+* @params: la direccion del inventory
+* @params2: numero que marca la posicion del objeto que se quiere tener el id
+* @return: el id del objeto si esta, sino NO_ID
+*
+*/
 Id inventory_get_object_id(Inventory *inv, int i){
 
   if(inv == NULL || i < 0 || i > MAX_INV){
@@ -108,6 +166,15 @@ Id inventory_get_object_id(Inventory *inv, int i){
   return set_get_id(inv->set, i);
 }
 
+
+/**
+*
+* @brief: guardar un objeto en el set perteneciente al inventory
+* @params: la direccion del inventory
+* @params2: El id del objeto
+* @return: si se ha guardado OK, sino ERROR
+*
+*/
 STATUS inventory_set_object(Inventory *inv, Id id){
 
   if(inv == NULL || id == NO_ID){
@@ -123,6 +190,15 @@ STATUS inventory_set_object(Inventory *inv, Id id){
   return OK;
 }
 
+
+/**
+*
+* @brief: deja un objeto del inventory
+* @params: la direccion del inventory
+* @params2: El id del objeto
+* @return: devuelve OK si ha salido bien o ERROR de lo contrario
+*
+*/
 STATUS inventory_drop_object(Inventory *inv, Id id){
 
   if(inv == NULL || id == NO_ID){
@@ -138,6 +214,14 @@ STATUS inventory_drop_object(Inventory *inv, Id id){
   return OK;
 }
 
+
+/**
+*
+* @brief: imprime por pantalla el inventory
+* @params: la direccion del inventory
+* @return: nada
+*
+*/
 void inventory_print(Inventory *inv){
 
   if(inv == NULL){

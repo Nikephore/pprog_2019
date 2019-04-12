@@ -216,6 +216,13 @@ STATUS game_add_object(Game* game, Object *object){
   return OK;
 }
 
+/**
+*@brief añade un link al juego
+*@param1 game. El juego al que añadimos el link
+*@param2 space. El link que añadimos al juego
+*@return devuelve OK si todo ha ido bien y si no, devuelve ERROR
+*/
+
 STATUS game_add_link(Game* game, Link *link){
   int i = 0;
 
@@ -276,6 +283,13 @@ Space* game_get_space(Game* game, Id id){
 
   return NULL;
 }
+
+/**
+*@brief se obtiene el link al cual pertenece una id
+*@param1 game. El juego al que pertenece el espacio
+*@param2 id. La id del link a buscar
+*@return se devuelve la direccion del link que coincide con la id, o NULL si ninguno coincide
+*/
 
 Link* game_get_link(Game* game, Id id){
   int i = 0;
@@ -376,6 +390,12 @@ char* game_get_object_name(Game* game, Id id){
   return NULL;
 }
 
+/**
+*@brief se obtiene una descripción
+*@param1 game. El juego al que nos referimos
+*@return devuelve la descripción la que nos referimos, o NULL si hubo algun problema
+*/
+
 char* game_get_description(Game* game){
 
   if(game == NULL){
@@ -466,6 +486,12 @@ char* game_get_command_imput(Game* game){
 
   return command_get_imput(game->last_cmd);
 }
+
+/**
+*@brief se obtiene la descripción de un espacio
+*@param1 game. El juego al que nos referimos
+*@return devuelve la descripción del espacio al que nos referimos, o NULL si hubo algun problema
+*/
 
 char* game_get_space_description(Game* game){
 
@@ -672,6 +698,7 @@ void game_callback_take(Game* game){
           if(game_get_player_location(game) == game_get_object_location(game, aux_id)){ /*Comprueba que jugador y objeto estan en la misma casilla*/
             player_add_element(game->player, aux_id); /*Añade el id del objeto al inventario*/
             object_set_location(game->object[i], NO_ID);
+            object_set_moved(game->object[i]);
             space_delete_object(game_get_space(game, loc), aux_id);
           }
         }
@@ -786,6 +813,11 @@ void game_callback_right(Game* game){
   return;
 }
 
+/**
+*@brief nos permite inspeccionar los elementos de nuestro juego
+*@param1 game. El juego que estamos utilizando
+*@return
+*/
 
 void game_callback_inspect(Game* game){
   int i = 0;
@@ -822,6 +854,12 @@ void game_callback_inspect(Game* game){
 
   return;
 }
+
+/**
+*@brief nos permite movernos por nuestro juego
+*@param1 game. El juego que estamos utilizando
+*@return
+*/
 
 void game_callback_move(Game *game){
   Link *link;
