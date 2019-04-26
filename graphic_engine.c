@@ -258,7 +258,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game){
   screen_area_clear(ge->help);
   sprintf(str, " The commands you can use are:");
   screen_area_puts(ge->help, str);
-  sprintf(str, "     next(n), back(b), exit(e), take(t), drop(d), roll(rl), right(r), left(l), inspect(i), move(m)");
+  sprintf(str, "     next(n), back(b), exit(e), take(t), drop(d), roll(rl), right(r), left(l), inspect(i), move(m), turnon(on), turnoff(off)");
   screen_area_puts(ge->help, str);
 
   /* Paint the in the feedback area */
