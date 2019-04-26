@@ -56,7 +56,9 @@ static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_left,
   game_callback_right,
   game_callback_inspect,
-  game_callback_move};
+  game_callback_move,
+  game_callback_turn_on,
+  game_callback_turn_off};
 
 /**
    Implementación de la interfaz de juego
