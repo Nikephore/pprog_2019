@@ -44,6 +44,8 @@ void game_callback_left(Game* game);
 void game_callback_right(Game* game);
 void game_callback_inspect(Game* game);
 void game_callback_move(Game* game);
+void game_callback_turn_on(Game *game);
+void game_callback_turn_off(Game *game);
 
 static callback_fn game_callback_fn_list[N_CALLBACK]={
   game_callback_unknown,
@@ -842,10 +844,11 @@ void game_callback_inspect(Game* game){
             if(object_turned_on(game->object[i]) == TRUE){
               strcpy(game->gdesc, object_get_description(game->object[i]));
               return;
-            }else{
-              strcpy(game->gdesc, "El objeto no esta iluminado. Intentalo mas tarde.");
-              return;
             }
+						else{
+            	strcpy(game->gdesc, "El objeto no esta iluminado. Intentalo mas tarde.");
+              return;
+						}
           }
         }
       }
@@ -905,3 +908,66 @@ void game_callback_move(Game *game){
   game_set_player_location(game, next_space_id);
 
 }
+
+void game_callback_turn_on(Game *game)
+{
+
+  if (!game || game_get_object_illuminate)
+		return;
+
+    /*Recorre los objetos*/
+    for(i=0; i<MAX_OBJECTS; i++){
+      /*Comprueba que no tiene el inventario lleno*/
+      if(inventory_get_num_objects(inv) != MAX_NUM_ID){
+        if(game->object[i] != NULL){ /*Comprueba que HAY un objeto*/
+          if(strcmp(object_get_name(game->object[i]), command_get_imput(game->last_cmd)) == 0){ /*Comprueba que el objeto es igual al que hemos pasado por comando*/
+            if(object_illuminate_space(game->object[i])==TRUE){
+              if(object_turned_on(game->object[i])==FALSE){
+                object_set_turnedon(game->object[i]);
+              }
+            }
+          }
+        }
+      }
+      return;
+    }
+    return;
+}
+
+void game_callback_turn_off(Game *game)
+{
+  if (!game || game_get_object_illuminate)
+    return;
+
+    /*Recorre los objetos*/
+    for(i=0; i<MAX_OBJECTS; i++){
+      /*Comprueba que no tiene el inventario lleno*/
+      if(inventory_get_num_objects(inv) != MAX_NUM_ID){
+        if(game->object[i] != NULL){ /*Comprueba que HAY un objeto*/
+          if(strcmp(object_get_name(game->object[i]), command_get_imput(game->last_cmd)) == 0){ /*Comprueba que el objeto es igual al que hemos pasado por comando*/
+            if(object_illuminate_space(game->object[i])==TRUE){
+              if(object_turned_on(game->object[i])==TRUE){
+                object_set_turnedon(game->object[i]);
+              }
+            }
+          }
+        }
+      }
+      return;
+    }
+    return;
+}
+
+/*BOOL game_get_object_illuminate(Game *game, int i){
+  if (!game || i<0 || i>MAX_OBJECTS){
+    return FALSE;
+  }
+  return object_illuminate_space(game->object[i]);
+}
+BOOL game_get_object_turned_on(Object* obj, int i){
+  if (!game || i<0 || i>MAX_OBJECTS){
+    return FALSE;
+  }
+  return object_turned_on(game->object[i]);
+}
+*/
