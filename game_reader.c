@@ -153,7 +153,7 @@ STATUS game_reader_load_objects(Game* game, char* filename){
       strcpy(altdesc, toks);
 
 #ifdef DEBUG
-      printf("Leido: %ld|%s|%ld|%s|%s\n", id, name, position, des,altdesc);
+      printf("Leido: %ld|%s|%ld|%s|%s\n", id, name, position, des, altdesc);
 #endif
 
 
