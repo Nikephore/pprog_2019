@@ -26,9 +26,9 @@ struct _Command{
   char imp[WORD_SIZE + 1];
 };
 
-char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Next", "Back",
-                            "Take", "Drop", "Roll", "Left", "Right", "Inspect", "Move"};
-char *short_cmd_to_str[N_CMD] = {"","","e","n","b","t","d","rl","l","r","i","m"};
+char *cmd_to_str[N_CMD] = {"No command", "Unknown", "Exit", "Next", "Back", "Take",
+                             "Drop", "Roll", "Left", "Right", "Inspect", "Move", "TurnOn", "TurnOff"};
+char *short_cmd_to_str[N_CMD] = {"","","e","n","b","t","d","rl","l","r","i","m", "on", "off"};
 /*
 *
 * @brief: reserva memoria dinámica suficiente crear un nuevo comando
@@ -146,6 +146,12 @@ STATUS command_get_user_input(Command *command){
           strcpy(command->imp, input1);
         }
         else if(aux > 1 && command->cmd == MOVE){
+          strcpy(command->imp, input1);
+        }
+        else if(aux > 1 && command->cmd == TURNON){
+          strcpy(command->imp, input1);
+        }
+        else if(aux > 1 && command->cmd == TURNOFF){
           strcpy(command->imp, input1);
         }
       }
